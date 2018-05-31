@@ -1,0 +1,41 @@
+{
+  "title": "Step 1: Adding HDR Environmental Texture",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Added HDR image"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/F1E83C2F8F1AD9B65D87763267715ED7.jpg\" width=\"558\" height=\"394\"><div><br></div><div>Looks like this from the outside:</div><div><img src=\"quiver-image-url/2FC7C01FFE81DEFB6897D390A57906ED.jpg\" width=\"1165\" height=\"729\"><br><div><br></div><div>With no other changes, looks like this from the inside:</div><div><br></div><div><img src=\"quiver-image-url/A02444E23F06C9E2CB76BF1C8C6C1F92.png\" alt=\"render001.png\" width=\"960\" height=\"540\"><br></div></div>"
+    },
+    {
+      "type": "text",
+      "data": "Lighting is too soft as light is coming from everywhere equally. Added Multiply node to scene. This finds the bright spot in the HDR."
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/FCCBAFBB5788D95E818526436B44E6FF.jpg\" width=\"616\" height=\"324\"><div><br></div><div><img src=\"quiver-image-url/2385FFC276C3012F1DD6DAEC37C6027D.png\" alt=\"render002.png\" width=\"960\" height=\"540\"><br></div>"
+    },
+    {
+      "type": "text",
+      "data": "This gives the image sharper brighter lighting, but loses the blue bounce color from the sky.<div>Duplicating the math node and changing to add replaces this color bounce.</div>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/7F6B25E236404CE34D2E72FE4DC18098.jpg\" width=\"673\" height=\"268\"><div><br></div><div><img src=\"quiver-image-url/F51FABFDB95277DC2F63FC4B28393EFD.png\" alt=\"render003.png\" width=\"960\" height=\"540\"><br></div>"
+    },
+    {
+      "type": "text",
+      "data": "This brings the reflected color back to the image. We have the problem now where the light is not hitting the wall or the couch.&nbsp;<div>Below I have added a Texture Coordinate node and a Mapping Node to the HDR image to rotate the image 30 degrees on the z axis.</div>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C095088ED78C47B53030B9D3DAEA759D.jpg\" width=\"766\" height=\"237\"><div><br></div><div><img src=\"quiver-image-url/170FABA48991547657DBB228F849B0F9.png\" alt=\"render004.png\" width=\"960\" height=\"540\"><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

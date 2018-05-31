@@ -1,0 +1,9 @@
+{
+  "title": "Moved eyes (and ears) on bot depending on if bot is powered or not",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><b>Tuesday, June 20th, 2017 4:13</b></div>Added code to check velocity of bot and move eyes up/ears down when accelerating up,<div>and move eyes down/ears up when falling.</div><div>Set both to neutral position when not moving or moving slowly</div>"
+    }
+  ]
+}

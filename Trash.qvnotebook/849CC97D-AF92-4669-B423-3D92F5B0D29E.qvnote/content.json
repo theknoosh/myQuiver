@@ -1,0 +1,9 @@
+{
+  "title": "Errors from upgrade cocos2d to 3.5",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<p style=\"margin: 0px 0px 0px 12px; text-indent: -12px; font-size: 11px; line-height: normal; font-family: Menlo;\">clang: error: no such file or directory: '/Users/dpayne/Dropbox/iPhone Game/SteamBot.spritebuilder/Source/libs/cocos2d-iphone/cocos2d/CCPackageDownloadManager.m’</p><p style=\"margin: 0px 0px 0px 12px; text-indent: -12px; font-size: 11px; line-height: normal; font-family: Menlo;\"><br></p><p style=\"margin: 0px 0px 0px 12px; text-indent: -12px; font-size: 11px; line-height: normal; font-family: Menlo;\">clang: error: no such file or directory: '/Users/dpayne/Dropbox/iPhone Game/SteamBot.spritebuilder/Source/libs/cocos2d-iphone/cocos2d/CCEffectDFInnerGlow.m'</p><div><br></div><div><p style=\"margin: 0px 0px 0px 12px; text-indent: -12px; font-size: 11px; line-height: normal; font-family: Menlo;\">clang: error: no such file or directory: '/Users/dpayne/Dropbox/iPhone Game/SteamBot.spritebuilder/Source/libs/cocos2d-iphone/cocos2d/CCEffectBlur.m'</p></div><div><br></div>"
+    }
+  ]
+}

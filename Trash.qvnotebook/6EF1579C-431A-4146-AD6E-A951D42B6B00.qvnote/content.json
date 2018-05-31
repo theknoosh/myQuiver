@@ -1,0 +1,14 @@
+{
+  "title": "Animating a sprite from one position to another",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "CCActionMoveTo *move = [CCActionMoveTo actionWithDuration:0.5 position:ccp(self.levelOnes.position.x + self.levelOnes.boundingBox.size.width, self.levelOnes.position.y)];\n\n[self.levelOnes runAction: move];"
+    },
+    {
+      "type": "text",
+      "data": "Code to move a sprite with a duration. This can be used for other objects as well, including obstacles that need to move into and off the screen<div><br></div><div>Appears to run in a separate thread, so can be started and forgotten.</div>"
+    }
+  ]
+}

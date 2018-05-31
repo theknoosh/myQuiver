@@ -1,0 +1,9 @@
+{
+  "title": "Gamestate has been successfully saved and restored",
+  "cells": [
+    {
+      "type": "text",
+      "data": "At last! I was able to save the gamestate when on a burner and then restore it using resume button on main menu"
+    }
+  ]
+}

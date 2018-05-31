@@ -1,0 +1,9 @@
+{
+  "title": "Attempting to animate water droplets",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Friday June 30, 2017 9:45am</b><div>Attempting to load animation from Action.sks file. Does not seem to work, and can find no documentation on it.</div><div>Looks like I will have to do it the hard way entirely in code.</div><div><br></div><div>Have succeeded in getting water droplets to work (in code only), still don’t know how to the the actions.sks editor.</div><div>Eventually I will find some documentation on it.</div>"
+    }
+  ]
+}

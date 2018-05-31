@@ -1,0 +1,9 @@
+{
+  "title": "arc4random_uniform",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<p style=\"margin: 8px 0px 9px 1px; padding: 0px; font-size: 1.4em; line-height: 1.35; color: rgb(129, 129, 132); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; font-style: italic; font-variant-ligatures: normal; orphans: 2; widows: 2;\">Instead of jumping through hoops to avoid modulo bias, make use of arc4random_uniform. This function is just like arc4random, except that it takes a u_int32_t that defines the upper bound. For example, to simulate rolling a 6-sided die without modulo bias:</p><p style=\"margin: 8px 0px 9px 1px; padding: 0px; font-size: 1.4em; line-height: 1.35; color: rgb(129, 129, 132); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; font-style: italic; font-variant-ligatures: normal; orphans: 2; widows: 2;\">uint32_t score = arc4random_uniform(6)+1;</p><p style=\"margin: 8px 0px 9px 1px; padding: 0px; font-size: 1.4em; line-height: 1.35; color: rgb(129, 129, 132); font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; font-style: italic; font-variant-ligatures: normal; orphans: 2; widows: 2;\">It’s that simple. The +1 at the end is to coerce the result into origin 1 (by default, score will range from 0..5, and we’d prefer 1..6).</p>"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Power the Bot",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Code for powering the bot is very simple but not set for the various portable burners:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "// Apply impulse to bot below 300 px\n// This code is for when bot is on burner\nif (body.getPosition().y < 5.0f){\n    body.applyLinearImpulse(new Vector2(0, -(body.getLinearVelocity().y - 15)), new Vector2(0,35.0f), true);\n}"
+    },
+    {
+      "type": "text",
+      "data": "This code works by sending impulse to reverse downward force of gravity. The force applied is slightly less than the velocity coming down, so bot bounces and slowly comes to a stop.<div><br></div><div>What I need to do is repurpose this code so that it can be used not only for the initial burner, but on all burners going forward.</div><div><br></div><div>Power the Bot. Again, I need to package this a little in a separate function so that I can add the steam animation, and burn steam as it moves. Code as it is now:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "if (Gdx.input.isTouched()){\n\n    float touchX = Gdx.input.getX();\n    float bodyX = steamBody.getX() + (steamBody.getWidth() / 2);\n    \n    if (touchX > bodyX){\n        body.applyLinearImpulse(new Vector2(1.0f, 10.0f),new Vector2(0,35.0f),true);\n    }else {\n        body.applyLinearImpulse(new Vector2(-1.0f, 10.0f),new Vector2(0,35.0f),true);\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "If the screen is touched to the left of the current Bot position, the Bot veers left, if right, it veers right.<div><br></div><div>Now need to add valve that appears when steam is running from Bot. Should be fairly simple. Hide valve behind bot when not needed then just move it down on the y axis when steam is running.</div><div><br></div><div>Valve added and coded so that it appears and disappears</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private Sprite steamValve;\n\npublic SteamBot(World world){\n  \n  steamValve = new Sprite( new Texture(\"SteamBot/steamValve.png\"));\n  \n  {"
+    }
+  ]
+}

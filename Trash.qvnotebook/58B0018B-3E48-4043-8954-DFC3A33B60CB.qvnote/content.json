@@ -1,0 +1,10 @@
+{
+  "title": "SteamBot Out of Steam",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "        if (!_sharedGameData.steamLevel > 0) {\n            // 1. Out of steam\n            \n            // Convert float velocity to integer\n            int sVel = (int)self.steamBot.physicsBody.velocity.y;\n            \n            // 2. Wait for ball to begin to fall (negative velocity)\n            if (sVel < 0)\n            {\n              ballIsFalling = YES;\n            }\n            \n              if (!(sVel > 0) && gameStarted) {\n                CCLOG(@\"Velocity: %d\",sVel);\n//              // Give player chance to fall on burner\n//              [self addChild:_YouLoseText];\n//                \n//              // Wait for animation to complete\n//              if (youLoseAnimationFinished) {\n//                  // Exit to main menu\n//                  [self gamePause];\n//                }\n                }\n          }"
+    }
+  ]
+}

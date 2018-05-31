@@ -1,0 +1,22 @@
+{
+  "title": "Weird way to access images",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Flutter has odd methods for accessing images.<div>I copied and pasted image into folder:</div><div><img src=\"quiver-image-url/7029162CDCAC4452586D5CB64CE0BA7C.jpg\" width=\"412\" height=\"214\"><br></div><div><br></div><div>This is the same as in Android, so no big deal. But apparently with flutter it doesn’t stop there:</div><div><br></div><div>In the file pubspec.yaml:</div><div>Added the following entry:</div>"
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "data": "# To add assets to your application, add an assets section, like this:\n# assets:\n#  - images/a_dot_burr.jpeg\n#  - images/a_dot_ham.jpeg\nassets:\n  - images/face.png"
+    },
+    {
+      "type": "text",
+      "data": "After that, I had to save the file then click on the following link:<div><br></div><div><img src=\"quiver-image-url/DD8249386F3A326B5F8C21304297E6C2.jpg\" width=\"266\" height=\"151\"><br></div><div><br></div><div>Make sure to click on Packages get (Packages upgrade also works I think)<br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

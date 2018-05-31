@@ -1,0 +1,9 @@
+{
+  "title": "Forgot Morning, so evening page",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Highly stressed today, always having issues getting along with Stephanie this morning for no reason I can think of. Was feeling really sick this morning to the point where I went home sick at noon. Took pain pill at 4:30 today and am just now starting to feel a little better here at Starbucks in Sherman Oaks.<div><br></div><div>Have done setup on Stephanie’s site, so happy about that at least. Will be going back through Lynda.com class on SASS, GULP, COMPASS and SUZY which I think I will be using for the site this time. Would also like to implement GSAP for SVG animations as well, but not yet.</div><div><br></div><div>Confusion abounds today as I am attempting to use Leslie’s old iPhone as a develpment device. At first the phone wouldn’t even show up as a device, now it says that the phone is at too high a version for xCode. So now I have to upgrade xCode to the latest version, which I am doing this minute. Hopefully nothing blows up.</div><div><br></div><div>In the meantime, I’m going over the Lynda.com class to do Stephanie’s web site. In the SASS class, he is using a javascript file for handling the images, which is taught in yet another class which I will probably have to take as well.</div>"
+    }
+  ]
+}

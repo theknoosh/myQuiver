@@ -1,0 +1,36 @@
+{
+  "title": "Close initial gate once Bot clears it",
+  "cells": [
+    {
+      "type": "text",
+      "data": "As I’ve noted somewhere else, you can’t add actions to a Sprite (who knows why). The two gates at the beginning of the game need to close once the Bot leaves the first burner. This gate will never be opened again unless there is a new game.<div><br></div><div>So, have to switch from Sprites for the gates to Images for the gates. This wasn’t too hard.<br><div><br></div><div>Next, need to know when the Bot has landed on the burner otherwise the gate will close before the Bot even drops to the burner. This is done with a boolean:</div></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private boolean firstGateTriggered = false;"
+    },
+    {
+      "type": "text",
+      "data": "Next, need to create the animation for each gate:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private MoveByAction leftGateAnim, rightGateAnim;\n\npublic GamePlay(GameMain game){ // Constructor\n\n  // Create and initial initial gates and initial burner\n  initialBurner = new Sprite(new Texture(\"GamePlay/BurnerBase.png\"));\n  initialBurner.setPosition(0,0);\n  leftGate = new Image(new Texture(\"GamePlay/leftCorridor.png\"));\n  rightGate = new Image(new Texture(\"GamePlay/rightCorridor.png\"));\n\n  leftGateAnim = new MoveByAction();\n  leftGateAnim.setAmount(150.0f,0f);\n  leftGateAnim.setDuration(1.0f);\n\n  rightGateAnim = new MoveByAction();\n  rightGateAnim.setAmount(-150.0f,0f);\n  rightGateAnim.setDuration(1.0f);\n\n  leftGate.addAction(leftGateAnim);\n  rightGate.addAction(rightGateAnim);\n  \n}"
+    },
+    {
+      "type": "text",
+      "data": "<div>In the update method, trigger the boolean then check for the Bot clearing the gate, then close it.</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private void update(){ // Called every game loop\n\n  // .onBurner variable is from SteamBot class\n  if (steamBot.onBurner){\n    firstGateTriggered = true;\n  }\n  \n   // Check to close gate\n  if (steamBot.getPosition() > leftGate.getY() + leftGate.getHeight() && firstGateTriggered){\n      leftGate.act(Gdx.graphics.getDeltaTime());\n      rightGate.act(Gdx.graphics.getDeltaTime());\n\n  }\n}"
+    },
+    {
+      "type": "text",
+      "data": "Once the gate closing, we need to do something with the initial burner and the flame. Either move it below the screen or render it invisible. Want to do this AFTER the gate closes, so this requires some extra magic in the form of a runnable. Think this is a java thing as I haven’t heard of it before:"
+    }
+  ]
+}

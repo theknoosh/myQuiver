@@ -1,0 +1,9 @@
+{
+  "title": "Problem with Bot bouncing over burners",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Monday July 3, 2017 4:21am</b><div>Unable to sleep due to pain in my foot, so I am up coding very early this morning.</div><div><br></div><div>Had the bouncing behavior working by using a spring field effect (build in to sprite kit), which worked very well except that it bounce when it was not over the corridor.</div><div><br></div><div>My solutions was to turn it on (.isEnabled = true) when over the corridor and turn it off when it’s not. This worked initially when I wrote it, but due to a disaster, I had to roll back my commits a day and had to rewrite it, and now it doesn’ work.</div><div>What it does is not bounce in the corridor on some burners and does in others. I’m sure I have solved this earlier, just don’t remember how.</div><div><br></div><div>Need to write this stuff down.</div><div><br></div><div><b>10:26am</b></div><div>Finally solved it (I think). Bot was bouncing below tolerance and once there could not get back up again. This would happen occasionally, so was difficult to spot.</div>"
+    }
+  ]
+}

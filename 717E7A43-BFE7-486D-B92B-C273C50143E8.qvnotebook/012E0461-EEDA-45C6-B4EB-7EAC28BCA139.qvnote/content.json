@@ -1,0 +1,9 @@
+{
+  "title": "Design Notes - Colors from Adobe pallette generator",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Looking at creating a five color pallette using adobe’s web service. Link below:<div><br></div><div><a href=\"https://color.adobe.com/create/color-wheel/?base=2&amp;rule=Analogous&amp;selected=0&amp;name=My%20Color%20Theme&amp;mode=rgb&amp;rgbvalues=0.6771342232792155,0.19039135280326247,1,0.33729780379381363,0.07686653777076573,0.91,0.15522190181381434,0.13446872282501732,1,0.07686653777076573,0.28960898670213076,0.91,0.2182062626560347,0.6355593779922268,1&amp;swatchOrder=0,1,2,3,4\">https://color.adobe.com/create/color-wheel/?base=2&amp;rule=Analogous&amp;selected=0&amp;name=My%20Color%20Theme&amp;mode=rgb&amp;rgbvalues=0.6771342232792155,0.19039135280326247,1,0.33729780379381363,0.07686653777076573,0.91,0.15522190181381434,0.13446872282501732,1,0.07686653777076573,0.28960898670213076,0.91,0.2182062626560347,0.6355593779922268,1&amp;swatchOrder=0,1,2,3,4</a><br></div><div><br></div><div>Not sure if these are the colors I am going to use, but is a good starting point.</div>"
+    }
+  ]
+}

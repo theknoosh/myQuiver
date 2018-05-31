@@ -1,0 +1,10 @@
+{
+  "title": "Calculating the distance between two objects",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "CGFloat xDist = (_steamBot.position.x - _fireBall.position.x);\nCGFloat yDist = (_steamBot.position.y - _fireBall.position.y);\nCGFloat distance = sqrt((xDist * xDist) + (yDist * yDist));"
+    }
+  ]
+}

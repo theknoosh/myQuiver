@@ -1,0 +1,10 @@
+{
+  "title": "Battleship Game code",
+  "cells": [
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "result = prompt(\"want to play Battleship?\", \"yes\");\n\nif (result == \"yes\"){\n  var location1 = Math.floor(Math.random()*5);\n   var location2 = location1+1;\n  var location3 = location1+2;\n  var guess;\n  var hits = 0;\n  var guesses = 0;\n  var issunk = false;\n\n  \n  alert (\"ship is located at \"+location1+\", \"+location2+\", and \"+location3);\n  guess = prompt (\"target?\");\n  if (guess == location1 | guess == location2 | guess == location3)\n    alert(\"sunk!\");\n  else alert (\"he got away!\");\n}\n  \n  \n  else alert (\"maybe next time\")\n  "
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Detecting if an object is already in a layer",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<p style=\"margin: 0px 0px 1em; padding: 0px; border: 0px; font-size: 15px; clear: both; color: rgb(36, 39, 41); font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-variant-ligatures: normal; line-height: 19.5px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">There's so many ways:</p><p style=\"margin: 0px 0px 1em; padding: 0px; border: 0px; font-size: 15px; clear: both; color: rgb(36, 39, 41); font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-variant-ligatures: normal; line-height: 19.5px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">1) try to get child</p>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "if (![layer getChild:sprite]) {\n   // Your code\n}"
+    },
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgb(36, 39, 41); font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 15px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">2) try to get child by tag</span>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "if (![layer getChildByTag:spriteTag]) {\n   // Your code\n}"
+    },
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgb(36, 39, 41); font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 15px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">3) Check if sprite is on children array</span>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "if ([layer.children indexOfObject:sprite] == NSNotFound) {\n   // Your code\n}"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

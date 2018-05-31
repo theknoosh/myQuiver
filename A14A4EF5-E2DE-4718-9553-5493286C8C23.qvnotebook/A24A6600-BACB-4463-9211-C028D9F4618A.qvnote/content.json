@@ -1,0 +1,121 @@
+{
+  "title": "1. Layout elements with autolayout without Storyboards",
+  "cells": [
+    {
+      "type": "text",
+      "data": "First created a single view project in XCode and added an image to the view:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "import UIKit\n\nclass ViewController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        // Application entry point\n        let imageView = UIImageView(image:  imageLiteral(resourceName: \"bear_first\"))\n        view.addSubview(imageView)\n        \n    }\n\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "This gave me this:<div><br></div><div><img src=\"quiver-image-url/58A2CA69E4ECA6A312D4CDBCDD83B2AA.jpg\" width=\"281\" height=\"609\"><br></div><div><br></div><div>So set up autoLayout with the following code:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "import UIKit\n\nclass ViewController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        // Application entry point\n        let imageView = UIImageView(image:  imageLiteral(resourceName: \"bear_first\"))\n        view.addSubview(imageView)\n        \n        // This enables autolayout for our imageview\n        imageView.translatesAutoresizingMaskIntoConstraints = false\n        \n        // Autolayout methods\n        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true\n        imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true\n        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true\n        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true\n    }\n\n    override func didReceiveMemoryWarning() {\n        super.didReceiveMemoryWarning()\n        // Dispose of any resources that can be recreated.\n    }\n\n\n}"
+    },
+    {
+      "type": "text",
+      "data": "Now I have this:<div><br></div><div>The code setup auto layout and centered the image on the screen with a width and height of 100.<br><div><br></div><div><img src=\"quiver-image-url/C5B1CD3B5E6E8E0718D3A7C3706F8F11.jpg\" width=\"281\" height=\"609\"><br></div></div><div><br></div><div>Now, I have changed to code to instead of centering on the Y and X axis, I am pinning the imageView to the top of the parent view on the Y axis:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "  // Autolayout methods\n  imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true\n  \n  // Removed the centerYanchor and replaced with .topAnchor\n  imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true\n  \n  imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true\n  imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true"
+    },
+    {
+      "type": "text",
+      "data": "This is the result:<div>Also made the image larger...<br><div><br></div><div><img src=\"quiver-image-url/7C835EB4E68ADD2EBD3D41D7E6DA3683.jpg\" width=\"281\" height=\"609\"><br></div></div><div><br></div><div>Did a variation of the same code, removing the imageView code out of ViewDidLoad using closure:</div><div><b><i>Note imageView is now bearImageView</i></b></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "// Take the imageView code out of viewDidLoad with closure\n// also known as anonymous function (function with no name)\nlet bearImageView: UIImageView = {\n    let imageView = UIImageView(image: #imageLiteral(resourceName: \"bear_first\"))\n    // This enables autolayout for our imageview\n    imageView.translatesAutoresizingMaskIntoConstraints = false\n    return imageView\n}()\n\nclass ViewController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        \n        // Application entry point\n        view.addSubview(bearImageView)\n        \n        // Autolayout\n        bearImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true\n        \n        bearImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true\n        \n        bearImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true\n        bearImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true\n    }\n\n    override func didReceiveMemoryWarning() {\n        super.didReceiveMemoryWarning()\n        // Dispose of any resources that can be recreated.\n    }\n\n\n}"
+    },
+    {
+      "type": "text",
+      "data": "More cleanup, moving autolayout setup to it’s own function outside of ViewDidLoad, and just calling this function in ViewDidLoad<div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "\n// Take the imageView code out of viewDidLoad with closure\n// also known as anonymous function (function with no name)\nlet bearImageView: UIImageView = {\n    let imageView = UIImageView(image:  imageLiteral(resourceName: \"bear_first\"))\n    // This enables autolayout for our imageview\n    imageView.translatesAutoresizingMaskIntoConstraints = false\n    return imageView\n}()\n\nclass ViewController: UIViewController {\n\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        // Application entry point\n \n        view.addSubview(bearImageView)\n        \n        setupLayout()\n    }\n\n    override func didReceiveMemoryWarning() {\n        super.didReceiveMemoryWarning()\n        // Dispose of any resources that can be recreated.\n    }\n    \n    private func setupLayout(){\n        \n        // Autolayout methods\n        bearImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true\n        \n        bearImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true\n        \n        bearImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true\n        bearImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true\n    }\n\n\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "Added a text view to the project in the same way as the imageView;"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let descriptionTextView: UITextView = {\n    let textView = UITextView()\n    textView.text = \"Join us today in our fun and games!\"\n    textView.font = UIFont.boldSystemFont(ofSize: 18)\n    textView.textAlignment = .center\n    textView.isEditable = false\n    textView.translatesAutoresizingMaskIntoConstraints = false\n    return textView\n}()\n"
+    },
+    {
+      "type": "text",
+      "data": "Added it to the main view:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "        view.addSubview(descriptionTextView)\n"
+    },
+    {
+      "type": "text",
+      "data": "Then added the constraints along with the other constraints in the setUpLayout function:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "  // Always need four constraints\n  // Note that the top anchor of the descriptionTextView is constrained to the bottom anchor of the bearImageView\n  descriptionTextView.topAnchor.constraint(equalTo: bearImageView.bottomAnchor, constant: 50).isActive = true\n  descriptionTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true\n  descriptionTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true\n  descriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true"
+    },
+    {
+      "type": "text",
+      "data": "When the phone is rotated to landscape the image is too big and the text is off the bottom of the screen. To fix this we add the following code:<div>In the bearImageView, we add &nbsp; &nbsp; imageView.contentMode = .scaleAspectFit</div><div>This keeps the aspect ration correct regardless of the container size it is in.</div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let bearImageView: UIImageView = {\n    let imageView = UIImageView(image:  imageLiteral(resourceName: \"bear_first\"))\n    // This enables autolayout for our imageview\n    imageView.translatesAutoresizingMaskIntoConstraints = false\n    imageView.contentMode = .scaleAspectFit\n    return imageView\n}()"
+    },
+    {
+      "type": "text",
+      "data": "Next we create a container to hold the imageView:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private func setupLayout(){\n        \n        // Create container for imageView\n        let topImageContainerView = UIView()\n        topImageContainerView.backgroundColor = .blue\n        view.addSubview(topImageContainerView)\n        topImageContainerView.translatesAutoresizingMaskIntoConstraints = false //enable auto layout\n        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true // Height half the view\n        topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true\n        topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true\n        topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true\n        \n        topImageContainerView.addSubview(bearImageView)\n        "
+    },
+    {
+      "type": "text",
+      "data": "We remove the bearImageView from the main view and add it to topImageContainerView.<div>We constrain the height of the topImageContainer view to half the height fot the main view</div><div>We get the following results:</div><div><br></div><div><img src=\"quiver-image-url/003106112F425F1664642CBE56473D58.jpg\" width=\"281\" height=\"609\"></div><div><br></div><div><br></div><div><img src=\"quiver-image-url/61A78211AFDDDB0DEE3A8A960E84626A.jpg\" width=\"609\" height=\"281\"><br></div><div><br></div><div>Note the image gets smaller depending on the height of the container.</div><div><br></div><div>Small change to the descriptionTextView. Changed the topAnchor to be constrained to the bottom anchor of the container instead of the imageView:</div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "        descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/7AFC5574E8F5BDF5749D6D41A968F9BB.jpg\" width=\"281\" height=\"609\"><div><br></div><div><img src=\"quiver-image-url/1DBB0EEEF312A31ABB17E4BFFA5CAF61.jpg\" width=\"609\" height=\"281\"><br></div><div><br></div><div>Better positioning of the text</div><div><br></div><div>Added additional text and switched to attributed string in the textView:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let descriptionTextView: UITextView = {\n    let textView = UITextView()\n    let attributedText = NSMutableAttributedString(string: \"Join us today in our fun and games!\", attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 18)])\n    attributedText.append(NSAttributedString(string: \"\\n\\n\\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.\", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 13),NSAttributedStringKey.foregroundColor:UIColor.gray]))\n    \n    textView.attributedText = attributedText\n\n    //    textView.text = \"Join us today in our fun and games!\"\n//    textView.font = UIFont.boldSystemFont(ofSize: 18)\n    textView.textAlignment = .center\n    textView.isEditable = false\n    textView.translatesAutoresizingMaskIntoConstraints = false\n    return textView\n}()"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/AE60A6FB9D3884E5D253B58DC19E2FE3.jpg\" width=\"281\" height=\"609\"><br><div><br></div><div><img src=\"quiver-image-url/CB4ADF67AA5B634319B093110AD77743.jpg\" width=\"609\" height=\"281\"><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

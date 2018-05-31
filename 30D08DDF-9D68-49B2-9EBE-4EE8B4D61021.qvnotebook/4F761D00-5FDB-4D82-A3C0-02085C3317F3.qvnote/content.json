@@ -1,0 +1,10 @@
+{
+  "title": "Animating the eyes of the Bot to match Bot direction and velocity:",
+  "cells": [
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public void updateBot(){\n\n    steamBody.setPosition((body.getPosition().x - 1.0f) * GameInfo.PPM,\n            (body.getPosition().y - 1.0f) * GameInfo.PPM);\n\n    // Call set face to determine which face to display\n    setFace();\n\n}\n\n// setFace determines which face and calls relevant function below\nprivate void setFace(){\n        if (body.getLinearVelocity().y > 1.0f){\n            upOrient();\n        } else if (body.getLinearVelocity().y < -1.0f){\n            downOrient();\n        } else {\n            neutralOrient();\n        }\n    }\n\n    public void upOrient(){\n        steamLeftEye.setPosition(steamBody.getX() + 45.0f, steamBody.getY() + 140.0f);\n        steamRightEye.setPosition(steamBody.getX() + (steamBody.getWidth() / 2) + 5.0f, steamBody.getY() + 140.0f);\n        steamLeftEar.setPosition(steamBody.getX() + 15.0f, steamBody.getY() + 60.0f);\n        steamRightEar.setPosition(steamBody.getX() + (steamBody.getWidth() / 2) + 30.0f, steamBody.getY() + 60.0f);\n    }\n    public void neutralOrient(){\n        steamLeftEye.setPosition(steamBody.getX() + 45.0f, steamBody.getY() + 100.0f);\n        steamRightEye.setPosition(steamBody.getX() + (steamBody.getWidth() / 2) + 5.0f, steamBody.getY() + 100.0f);\n        steamLeftEar.setPosition(steamBody.getX() + 15.0f, steamBody.getY() + 100.0f);\n        steamRightEar.setPosition(steamBody.getX() + (steamBody.getWidth() / 2) + 30.0f, steamBody.getY() + 100.0f);\n    }\n    public void downOrient(){\n        steamLeftEye.setPosition(steamBody.getX() + 45.0f, steamBody.getY() + 40.0f);\n        steamRightEye.setPosition(steamBody.getX() + (steamBody.getWidth() / 2) + 5.0f, steamBody.getY() + 40.0f);\n        steamLeftEar.setPosition(steamBody.getX() + 15.0f, steamBody.getY() + 140.0f);\n        steamRightEar.setPosition(steamBody.getX() + (steamBody.getWidth() / 2) + 30.0f, steamBody.getY() + 140.0f);\n\n    }\n"
+    }
+  ]
+}

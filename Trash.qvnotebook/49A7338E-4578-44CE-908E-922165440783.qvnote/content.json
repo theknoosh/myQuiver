@@ -1,0 +1,9 @@
+{
+  "title": "Moving from one level to the next",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<ul><li>Save some settings</li><ul><li>Current steam level and water level</li><li>Current level</li><li><br></li></ul><li>Blow out everything else</li><li>Reset background and physics layer to zero (or close to it) without this being visible to the player</li><ul><li>Possible solution — get screen position and set world postion to same place</li></ul><li>Set bounce point to above burner and turn on fire</li><li>reset distance and time</li><li>Add past distance to some permanent variable</li><li>Add next gate to some position above current position</li><li>Return control to player</li><li>Most of this is done in levelReset()</li><li><br></li></ul>"
+    }
+  ]
+}

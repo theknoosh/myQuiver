@@ -1,0 +1,18 @@
+{
+  "title": "BUG: Steam not building when on portable burner",
+  "cells": [
+    {
+      "type": "text",
+      "data": "May be side effects from other changes, as it was working before.<div><br></div><div>Note:</div><div>steamVial goes from 0(full) to 1 (empty)</div><div>waterVial goes from 1(full) to 0(empty)</div><div><br></div><div>Error is steamVialisFull boolean remains true. Why do we have a steamVialisFull boolean?? instead of just checking gm.steamLevel??</div><div><br></div><div>Fixed by eliminating the steamVialisFull boolean now have another problem where the bot doesn’t bounce.</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void buildSteam(float delta) {\n\n        if (gm.waterLevel < 1.0f && gm.steamLevel > 0) {\n\n            gm.steamLevel -= GameInfo.STEAM_SCALE * delta;\n            gm.waterLevel += GameInfo.WATER_SCALE * delta;\n\n//            if (gm.steamLevel < 0) { // Steam full\n//                gm.steamLevel = 0;\n//                steamVialIsFull = true;\n//            }\n//            if (gm.waterLevel > 1.0f) {\n//                gm.waterLevel = 1.0f;\n//            }\n        }\n\n    } // buildSteam"
+    },
+    {
+      "type": "text",
+      "data": "Also had unnecessary code (commented out here)."
+    }
+  ]
+}

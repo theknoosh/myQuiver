@@ -1,0 +1,9 @@
+{
+  "title": "Loading google web fonts locally",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgb(51, 51, 51); font-family: &quot;Noto Serif&quot;, serif; font-size: 19px; font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">$ brew tap caskroom/fonts # you only have to do this once! (already done)</span><br style=\"box-sizing: inherit; color: rgb(51, 51, 51); font-family: &quot;Noto Serif&quot;, serif; font-size: 19px; font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\"><span style=\"color: rgb(51, 51, 51); font-family: &quot;Noto Serif&quot;, serif; font-size: 19px; font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">$ brew cask install font-inconsolata</span>"
+    }
+  ]
+}

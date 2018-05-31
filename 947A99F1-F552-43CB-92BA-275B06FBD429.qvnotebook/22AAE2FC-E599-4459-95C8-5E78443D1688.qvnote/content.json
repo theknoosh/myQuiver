@@ -1,0 +1,23 @@
+{
+  "title": "Using JSON for Obstacles",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Have done a test in Swift Playgrounds and have it basically working shown below:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "// data.json\n\n{\n    \"users\": [\n              {\n              \"name\": \"John\",\n              \"age\": 25\n              },\n              {\n              \"name\": \"Mark\",\n              \"age\": 29\n              },\n              {\n              \"name\": \"Sarah\",\n              \"age\": 22\n              }\n              ],\n    \"dataTitle\": \"JSON Tutorial!\",\n    \"swiftVersion\": 2.1\n}"
+    },
+    {
+      "type": "text",
+      "data": "Swift implementation: (need to create the same workflow for Android)"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "\n\nimport UIKit\n\nlet path = Bundle.main.path(forResource: \"data\", ofType: \"json\")\n\nlet url = URL(fileURLWithPath: path!)\n\nlet data = try Data(contentsOf: url)\n\n\nstruct User: Codable {\n    var name: String\n    var age: Int\n}\n\nstruct UserList: Codable {\n    var users: [User]\n}\n\nfunc readJSONObject(object: [String: AnyObject]){\n    guard let title = object[\"dataTitle\"] as? String,\n        let version = object[\"swiftVersion\"] as? Float,\n        let users = object[\"users\"] as? [[String: AnyObject]] else {return}\n    _ = \"Swift \\(version) \" + title\n    \n    for user in users {\n        guard let name = user[\"name\"] as? String,\n            let age = user[\"age\"] as? Int else { break }\n        switch age {\n        case 22:\n            _ = name + \" is \\(age) years old.\"\n        case 25:\n            _ = name + \" is \\(age) years old.\"\n        case 29:\n            _ = name + \" is \\(age) years old.\"\n        default:\n            break\n        }\n    }\n}\n\ndo {\n    let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)\n    \n    if let dictionary = object as? [String:AnyObject]{\n        readJSONObject(object: dictionary)\n    }\n} catch {}\n\n\n"
+    }
+  ]
+}

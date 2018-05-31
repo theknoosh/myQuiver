@@ -1,0 +1,14 @@
+{
+  "title": "Formatting integer for nslog",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><br></div><img src=\"quiver-image-url/ECC65696-A714-4B51-A9FD-B6DA3E687D5F.jpg\"><div><br></div><div><br></div><div>%u prints out the number (can also use %d), %x and %X prints out in hexadecimal, %o and %O prints out in octal</div>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "// Fill in the question marks\nuint32_t u32 = 4;\nint16_t i16 = 5;\nNSInteger nsInt = 6;\n \nNSLog(@\"uint32_t: %??? (%lu bytes): %??? to %???\", u32, sizeof(u32), (int)???, (int)???);\nNSLog(@\"int16_t: %??? (%lu bytes): %??? to %???\", i16, sizeof(i16), (short)???, (short)???);\nNSLog(@\"NSInteger: %??? (%lu bytes)\", ???, sizeof(nsInt));\n \n// Why is this incorrect on 64-bit architecture?\nnsInt = 1000000000000000000;\nint myInt = (int)nsInt;\nNSLog(@\"NSInteger: %ld\", (long) nsInt);\nNSLog(@\"myInt: %d\", myInt);"
+    }
+  ]
+}

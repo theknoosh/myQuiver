@@ -1,0 +1,9 @@
+{
+  "title": "Step 6: Open wall behind camera for additonal light in scene:",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><img src=\"quiver-image-url/402042303E56F83BFA379859F28A2566.jpg\" width=\"932\" height=\"732\"><br></div><div><br></div><div>Render before:</div><div><img src=\"quiver-image-url/BDA0D26544BCC6013EFACDFCEF747F01.png\" alt=\"OfficeRender015.png\" width=\"960\" height=\"540\"><br></div><div><br></div><div>Render after: (This also added a blue tint to the scene)</div><div><img src=\"quiver-image-url/1B56B0C5E99612121DF4B7074AB842DD.png\" alt=\"OfficeRender016.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

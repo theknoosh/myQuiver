@@ -1,0 +1,9 @@
+{
+  "title": "Data to be saved in iCloud",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<ol><li>obstacleInfoList: obstacleInfo - struct with all spawned obstacles information</li><li>score: Int - current score</li><li>level: Int - current level</li><li>topMost: CGFloat - position of highest obstacle</li><li>waterLevel: CGFloat - current water level</li><li>steamLevel: CGFloat - current steamLevel</li><li>backgroundObstacleInfo - list of all spawned background objects</li><li>inAppPurchase ?? - track status of inApp purchases</li></ol>"
+    }
+  ]
+}

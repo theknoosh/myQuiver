@@ -1,0 +1,9 @@
+{
+  "title": "Problem with structs",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Found that the issue I had in objective-c is the same for swift. Cannot store structs in iCloud as I could not store structs in NSCoding before. Had to convert the structs to NSData objects, store them in iCloudn and then convert them back when I read them back in.<div><br></div><div>Found some code using an extension online that seems to work.</div><div><br></div><div>Was going to avoid using structs, but have found that they do have their uses, and is worth the work to use them.</div>"
+    }
+  ]
+}

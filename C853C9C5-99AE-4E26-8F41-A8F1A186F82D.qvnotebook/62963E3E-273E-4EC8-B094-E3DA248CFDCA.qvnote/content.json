@@ -1,0 +1,50 @@
+{
+  "title": "Closures/Completion Handlers",
+  "cells": [
+    {
+      "type": "text",
+      "data": "This is something I need quite often, but do not understand very well. What it basically does is run a block of code <i><b>after</b></i> some other process is completed.<div><br></div><div>For instance, I am running two animations. It might be necessary to run the second animation after the first one is complete.</div><div><br></div><div>First looking at Closures. Closures are related to functions that are in turn related to Completion Handlers:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "// Global Closure (a.k.a function) \nfunc timesTenFunc(number: Int) -> Int { return number * 10 }\n\n// Normal Closure \nvar timesTenClosure: (Int) -> Int = { $0 * 10 }\n\n// Test👆\ntimesTenFunc(number: 10) // 100\ntimesTenClosure(10) // 100"
+    },
+    {
+      "type": "text",
+      "data": "In the function there is a <b>number</b> variable (also known as the label) that holds the number passed to it. The return type is specified as Int (-&gt; Int) That iVar is multiplied by 10 and returned to the caller.<div><br></div><div>In the normal closure, there is no iVar, though Int is specified as type. &nbsp;and Int is specified as return value type the same as in the function. The number passed to the closure is indicated by $0 for the first parameter. $1 would be second parameter if present, $2, and so on.</div><div><br></div><div>The return is implied apparently.</div><div><br></div><div>Here is a function added that has a closure as one of the parameters. You can pass named closures as well as function names as parameters in other functions:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "func sum(from: Int, to: Int, closure: (Int) -> (Int)) -> Int {\n    var sum = 0\n    for i in from...to {\n        sum += closure(i)\n    }\n    return sum\n}"
+    },
+    {
+      "type": "text",
+      "data": "Here is the way this function is called using both a normal closure and a function:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "sum(from: 0, to: 10, closure: timesTenFunc) // 550\nsum(from: 0, to: 10, closure: timesTenClosure) // 550 "
+    },
+    {
+      "type": "text",
+      "data": "Here is another way to call the function with the closure. Instead of passing the name of the closure written elsewhere as a parameter, put the closure itself in the function call:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "// Longer Version\nsum(from: 0, to: 10, closure: { number in return number * 10 })\n\n// Shorter Version\nsum(from: 0, to: 10, closure: { $0 * 10 })"
+    },
+    {
+      "type": "text",
+      "data": "<h2><b>Trailing Closures</b></h2><div><span style=\"color: rgba(0, 0, 0, 0.8); font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 21px; font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">Just like the&nbsp;</span><code class=\"markup--code markup--p-code\" style=\"font-family: Menlo, Monaco, 'Courier New', Courier, monospace; font-size: 16px; background-color: rgba(0, 0, 0, 0.0470588); padding: 3px 4px; margin-right: 2px; margin-left: 2px; color: rgba(0, 0, 0, 0.8); font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-position: initial initial; background-repeat: initial initial;\">sum</code><span style=\"color: rgba(0, 0, 0, 0.8); font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 21px; font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">&nbsp;example above, a trailing closure can be used only if a function&nbsp;</span><span class=\"markup--strong markup--p-strong\" style=\"font-weight: 700; color: rgba(0, 0, 0, 0.8); font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 21px; font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">requires a closure&nbsp;</span><span style=\"color: rgba(0, 0, 0, 0.8); font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 21px; font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">as the&nbsp;</span><span class=\"markup--strong markup--p-strong\" style=\"font-weight: 700; color: rgba(0, 0, 0, 0.8); font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 21px; font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">final argument/parameter.&nbsp;</span><span style=\"color: rgba(0, 0, 0, 0.8); font-family: medium-content-serif-font, Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 21px; font-variant-ligatures: normal; letter-spacing: -0.063px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">You may trail (to follow behind) the closure argument parameter section. In other words, the final parameter is separated from the normal function parameter block.</span><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "// Trailing Closure Longer Version\nsum(from: 0, to: 10) { (number) in\n return number * 10 \n}\n// Trailing Closure Shorter Version\nsum(from: 0, to: 10) { return $0 * 10}\n\n// Trailing Closure Extremely Short Version\nsum(from: 0, to: 10) { $0 * 10 } "
+    }
+  ]
+}

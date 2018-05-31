@@ -1,0 +1,9 @@
+{
+  "title": "Today starting rebuilding SteamBot from scratch",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Tuesday June 20th, 2017 12:37am</b><div>Have started today to rebuild steambot from scratch</div><div><br></div><div>First step is to use green box as subsitute for steamBot and red box to indicated the ground.</div><div>Have added physics to both so that bot drops with gravity. Have used physics impulse to simulate driving the bot into the air.</div><div><br></div><div>I am home full time due to my motorcycle accident, so I have plenty of time to do this.</div>"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Docker Ubuntu Linux",
+  "cells": [
+    {
+      "type": "text",
+      "data": "to launch:<div><span style=\"color: rgb(44, 45, 48); font-family: Slack-Lato, appleLogo, sans-serif; font-size: 15px; background-color: rgb(249, 249, 249);\">docker run -i -t ubuntu /bin/bash</span><br></div><div><span style=\"color: rgb(44, 45, 48); font-family: Slack-Lato, appleLogo, sans-serif; font-size: 15px; background-color: rgb(249, 249, 249);\"><br></span></div>"
+    }
+  ]
+}

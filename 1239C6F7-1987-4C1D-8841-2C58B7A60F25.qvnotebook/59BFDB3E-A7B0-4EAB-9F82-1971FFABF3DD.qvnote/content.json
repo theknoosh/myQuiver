@@ -1,0 +1,27 @@
+{
+  "title": "Manifest file",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><font face=\"Arial\"><span style=\"font-size: 14px;\">The manifest file is where I am having the most problems. Have been unable to get the up menu to work correctly.</span></font></div>"
+    },
+    {
+      "type": "code",
+      "language": "xml",
+      "data": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"darrellpayne.com.sunshine\" >\n\n    <uses-permission android:name=\"android.permission.INTERNET\" />\n\n    <application\n        android:allowBackup=\"true\"\n        android:icon=\"@drawable/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:theme=\"@style/AppTheme\" >\n"
+    },
+    {
+      "type": "text",
+      "data": "<div><font face=\"Arial\"><span style=\"font-size: 14px;\">Only the AppTheme (above) works with files extended from ActionBarActivity.</span></font></div><div><font face=\"Arial\"><span style=\"font-size: 14px;\">The android:theme=\"@android:style/Theme.Holo.Light.DarkActionBar” works only for the Settings Activity so far.</span></font></div>"
+    },
+    {
+      "type": "code",
+      "language": "xml",
+      "data": "\n        <activity\n            android:name=\"darrellpayne.com.sunshine.MainActivity\"\n            android:label=\"@string/app_name\" >\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n        <activity\n            android:theme=\"@android:style/Theme.Holo.Light.DarkActionBar\"\n            android:name=\"darrellpayne.com.sunshine.DetailActivity\"\n            android:label=\"@string/title_activity_detail\"\n            android:parentActivityName=\"darrellpayne.com.sunshine.MainActivity\" >\n            <meta-data\n                android:name=\"android.support.PARENT_ACTIVITY\"\n                android:value=\"darrellpayne.com.sunshine.MainActivity\" />\n        </activity>\n        <activity\n            android:theme=\"@android:style/Theme.Holo.Light.DarkActionBar\"\n            android:name=\"darrellpayne.com.sunshine.SettingsActivity\"\n            android:label=\"@string/title_activity_settings\"\n            android:parentActivityName=\"darrellpayne.com.sunshine.MainActivity\" >\n            <meta-data\n                android:name=\"android.support.PARENT_ACTIVITY\"\n                android:value=\"darrellpayne.com.sunshine.MainActivity\" />\n        </activity>\n    </application>\n\n</manifest>\n"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Step 5: Adding depth to the scene",
+  "cells": [
+    {
+      "type": "text",
+      "data": "To add light and depth to the scene by first: Adding two doors down the hallway using loop cuts to add additional light:<div><br><div><img src=\"quiver-image-url/4F436A79A90F0779F1EA8BF580857EE6.jpg\" width=\"768\" height=\"539\"><br></div></div><div><br></div><div>Then adding a mirror to the end of the hallway. This is just a rectangle with an Inset bevel ( press I), then adding a Glossy shader to it.</div><div><br></div><div><img src=\"quiver-image-url/7CA8C6AECD21C891E9CB3C4CE11A47C4.jpg\" width=\"521\" height=\"628\"><br></div><div><br></div><div>I then added a piece of artwork on the opposite wall that would reflect off the mirror:</div><div><br></div><div><img src=\"quiver-image-url/E28C738AF90FEE2180D967E94D77D0F1.jpg\" width=\"499\" height=\"557\"><br></div><div><br></div><div>Here is a render with the new elements in place:</div><div><img src=\"quiver-image-url/806E55A3D6C9846229F845E2AA554968.png\" alt=\"render014.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

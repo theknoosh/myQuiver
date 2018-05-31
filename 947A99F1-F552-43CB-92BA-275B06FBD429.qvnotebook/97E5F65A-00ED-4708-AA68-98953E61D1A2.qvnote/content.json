@@ -1,0 +1,18 @@
+{
+  "title": "Bot not bouncing when on burner (is glowing though)",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Testing:<div>Bot is on burner, but bounce() function is not being called.</div><div>buildSteam() function is being called.</div><div><br></div><div>Code below is from GamePlay.java</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "ObstInfo targetObstacle = obstController.inRange(steamBot);\n\n// Specified obstacle found...\nif (targetObstacle != null) {\n    float capturePos;\n    switch (targetObstacle.obstacleType) {\n        case 2: // left burner\n            steamBot.onPortableBurner = true;\n            capturePos = GameInfo.LEFT_BURNER_XTRAP;\n            steamBot.setPosition(new Vector2((capturePos / GameInfo.PPM) + 1.0f,\n                    (steamBot.getPosition() / GameInfo.PPM) + 1.0f));\n            if (targetObstacle.distanceFromBot.y > 200.0f){\n                steamBot.onPortableBurner = false;\n            }\n            if (targetObstacle.distanceFromBot.y < 60.0f) {\n                steamBot.burnerBounce();\n            }\n            break;"
+    },
+    {
+      "type": "text",
+      "data": "targetObstacle is reading NULL. This is wrong. Should not read NULL is on the burner<div>Looking at ObstaclesController.java</div><div>Code is finding no obstacle in range even though bot is sitting right on top of obstacle.</div>"
+    }
+  ]
+}

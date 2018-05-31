@@ -1,0 +1,9 @@
+{
+  "title": "Avoid comparing floating point numbers (a == b)",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Floating point numbers are an “approximation” of decimal numbers. While the error is very small, equality will often fail where if using integers, etc., the problem does not exist."
+    }
+  ]
+}

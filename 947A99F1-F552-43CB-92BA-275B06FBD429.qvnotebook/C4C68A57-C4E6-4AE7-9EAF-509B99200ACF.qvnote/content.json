@@ -1,0 +1,14 @@
+{
+  "title": "BUG: Water bubble has no effect on water level.",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Simple answer: scaling number was just too small. Changed number from 0.01 to 0.5. May need to adjust that number later. This is in GameInfo.java."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public static final float BUBBLE_SCALE = 0.5f;"
+    }
+  ]
+}

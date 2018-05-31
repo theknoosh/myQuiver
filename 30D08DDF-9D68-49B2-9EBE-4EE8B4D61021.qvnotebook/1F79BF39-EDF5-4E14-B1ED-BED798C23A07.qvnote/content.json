@@ -1,0 +1,9 @@
+{
+  "title": "Minimum Viable Product (MVP)",
+  "cells": [
+    {
+      "type": "text",
+      "data": "What is the least amount of working features to have a playable game and when will it be done?<div><br></div><div><ol><li>Must have minimum number of obstacles</li><ol><li>Sawblade (left and right side)</li><li>Portable burners (left and right side)</li><li>Moving sawblades (left and right)</li><li>Working levels</li><li>Levels indicator</li><li>Pause button</li><li>Ability to restart game at last position</li><li>Ability to save game to device or cloud (firebase?)</li><li>Scoring system</li><li>Sound effects</li><li>Music</li><li>Water bubbles</li></ol></ol></div>"
+    }
+  ]
+}

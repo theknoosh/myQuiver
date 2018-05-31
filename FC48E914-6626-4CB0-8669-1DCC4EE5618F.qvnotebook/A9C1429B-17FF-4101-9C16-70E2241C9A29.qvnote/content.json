@@ -1,0 +1,18 @@
+{
+  "title": "Animation on the Nav bar (transitions)",
+  "cells": [
+    {
+      "type": "text",
+      "data": "First attempt at using transitions on the nav bar. Added the code below:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "data": "li a {\n        display: block;\n        color: white;\n        padding: 8px 16px;\n        text-decoration: none;\n        text-align: center;\n        \n        transition: background-color .5s ease-in, transform .5s .25s ease-in-out;\n    }\n    \n    li a:hover { \n        background-color: tomato;\n        transform: scale(1.2);\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "The code simply changes the size and color of the button when the mouse hover over the button<div><br></div><div>In the code above that the transition property handles how the transition works.&nbsp;</div><div>The background-color property transitions over a half second and eases in. The transform property transition over a half second time frame with a delay of .25 seconds with an ease-in-out property</div>"
+    }
+  ]
+}

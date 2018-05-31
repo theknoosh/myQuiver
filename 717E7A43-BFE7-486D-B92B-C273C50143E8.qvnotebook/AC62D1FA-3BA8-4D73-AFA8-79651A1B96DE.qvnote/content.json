@@ -1,0 +1,48 @@
+{
+  "title": "Jetwork tech issues",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>10/12/16</div><div><br></div><div><b>Status of JetWork as of today:</b></div><div><br></div><div>Tab View controller up and running</div><div>TableView is using hard wired data until I get firebase data working</div><div>Have added manual contacts (not complete) until I figure out importing contacts from social networks</div><div>Have found possible cocopod to import Facebook contacts. Do not know yet if this is feasable</div><div><br></div><div>Accounts can be created and it is necessary to login to access app</div><div>Have not yet found a way to verify if email addresses are valid</div><div>On add contact screen there is no way to dismiss the keyboard once it appears</div><div>Have found a way to differentiate which textView is triggering keyboard notification (Submit button is covered when keyboard is on screen)&nbsp;</div><div></div>"
+    },
+    {
+      "type": "text",
+      "data": "<div>9/23/16</div><div>After fighting with firebase for three days, I have finally found the solution for why the app crashes when trying to configure firebase.</div><div>Firebase instructions say put code here:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "  func application(_ application: UIApplication, didFinishLaunchingWithOptions\n      launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {\n    FIRApp.configure()\n    return true\n  }"
+    },
+    {
+      "type": "text",
+      "data": "<div>But after searching online, someone said to put the code here instead:<br></div><div><br></div><div></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "  private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]? = [:]) -> Bool {\n    UIApplication.shared.statusBarStyle = .lightContent\n    return true\n  }\n  \n  override init() {\n    super.init()\n    FIRApp.configure()\n    // not really needed unless you really need it FIRDatabase.database().persistenceEnabled = true\n  }\n\n"
+    },
+    {
+      "type": "text",
+      "data": "<div>Wonder of wonders, that fixed it!</div>"
+    },
+    {
+      "type": "text",
+      "data": "<div><br></div><div><br></div><div>9/21/16</div><div>Back to SteamBot project. Doing research on how to encapsulate the steamBot behavior. Figuring out ways to group separate parts of the bot together then animate parts separately and still be able to add physics to the whole thing. Found a post that would possibly have part of the solution:</div><div><br></div><div>There are a couple of SKAction class methods that may be of interest. The first being runBlock: and the second being group: (this allows actions to be run in parallel).</div><div><br></div><div>You can run actions on nodes with a completion handler using runAction: completion:</div><div><br></div><div>The following code puts each 'animation action', along with completion block in a 'block action'. The block actions are then put into a 'group action'. Finally the group action is told to run. This causes each block action to start at the same time. The completion handler of each block action calls a method named checkCompletion. This method checks for nodes (with a specific name property value) still animating by calling hasActions on the node. Because the node that called the checkCompletion method will return YES, if only one node returns YES then all animations are done.</div><div><br></div><div>The following demonstrates this using two nodes, however it will work for more than two.</div><div><br></div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "// assuming two SKNode subclasses named 'node1' and 'node2' AND 'self' is an SKScene subclass\n\n// assign each animating node the same name (used in checkCompletion method)\nnode1.name = @\"animating\";\nnode2.name = @\"animating\";\n// in this example both nodes will animate to the origin\nCGPoint origin = CGPointMake(0.0, 0.0);\n// make move actions for nodes\nSKAction *shortMove = [SKAction moveTo:origin duration:1.2];\nSKAction *longMove = [SKAction moveTo:origin duration:4.8];\n// wrap nodes in their own separate block action\nSKAction *moveNode1 = [SKAction runBlock:^{\n    [node1 runAction:shortMove completion:^{\n        NSLog(@\"shortMove complete\");\n        [self checkCompletion];\n    }];\n}];\nSKAction *moveNode2 = [SKAction runBlock:^{\n    [node2 runAction:longMove completion:^{\n        NSLog(@\"longMove complete\");\n        [self checkCompletion];\n    }];\n}];\n// put block actions in a group action\nSKAction *groupAction = [SKAction group:@[moveNode1, moveNode2]];\n// execute group action\n[self runAction:groupAction];\ncheckCompletion method -\n\n- (void)checkCompletion {\n\n     __block int currentlyHasActions = 0;\n     // check for all actions complete on animating nodes\n     [self enumerateChildNodesWithName:@\"animating\" usingBlock:^(SKNode *node, BOOL *stop){\n         if ([node hasActions]) {\n             currentlyHasActions++;\n             // prevent unnecessary enumeration\n             if (currentlyHasActions > 1) { *stop = YES; }\n         }\n     }];\n     if (currentlyHasActions == 1) {\n         NSLog(@\"Actions Finished!!!\");\n\n         // execute completion code here...\n\n     }\n}\n// Unfortunately the following will not work as a block actions duration is instantaneous. Consequently the duration of the group action in this case is also instantaneous. This is the reason for the checkCompletion method.\n\n[self runAction:groupAction completion:^{\n     // completion code here... :(\n}];"
+    },
+    {
+      "type": "text",
+      "data": "<div>9/17/2016</div><div>Doing some work on my devslopes IOS class. Doing retrocalculator and have succeeded in getting the numbers layed out on the screen and adding a sound to the button clicks and getting the numbers to appear on the screen. Have to stop and now and work on some freelance work.</div><div><br></div><div>9/16/2016 10:32pm</div><div>Have recently started rewriting my SteamBot game from scratch using SpriteKit instead of Cocos2d which has failed since updating to IOS 10, XCode 8 and Swift 3.</div><div><br></div><div>This has been dificult as I have to not only learn SpriteKit, but Swift 3, especially since all my training material is for Sprite 2.</div><div><br></div><div>Think this is worth it, as I will avoid these catastrophic incompatibilities in the future.</div><div><br></div><div>I am currently working on IOS class by devslopes that will give me the ability to do regular app programming and maybe finally get a freelance coding job in the future.</div><div><br></div><div>Also working on the JetWork app which I am developing with a partner, Sophic Parkinson.</div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

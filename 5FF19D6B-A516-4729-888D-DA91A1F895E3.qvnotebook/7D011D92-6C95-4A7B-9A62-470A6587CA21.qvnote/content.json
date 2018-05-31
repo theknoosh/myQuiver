@@ -1,0 +1,21 @@
+{
+  "title": "Step 2: Add the windows",
+  "cells": [
+    {
+      "type": "text",
+      "data": "To create the windows in user preferences enable the Windows Generator plug in:"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/31C9A4ED80FE190E08258D110D9C9656.jpg\" width=\"796\" height=\"400\"><div>When setting up the window, make sure not to do anything else (like rotating window), as this will cause all the settings to disappear.</div><div>The materials are there, but not set up correctly (The glass texture is not transparent for instance):</div>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/D4786A5206B702A11FD82B427E418927.jpg\" width=\"562\" height=\"248\"><div><br></div><div>Need to add glass shader mixed with transparent shader, then use light path shadow to mix two inputs that in turn control the factor of the two glass shaders, while still maintaining reflections.</div><div><br></div><div><img src=\"quiver-image-url/CDCD7A31ACCFF369B9E66A1B88954860.jpg\" width=\"795\" height=\"546\"><br></div><div><br></div><div>This gives this result:</div><div><br></div><div><img src=\"quiver-image-url/D88205B2BBCF311F7DEF4DA816C6368B.png\" alt=\"render005.png\" width=\"960\" height=\"540\"><br></div><div><br></div><div>Will make the frame of the window dark with a little gloss:</div><div><img src=\"quiver-image-url/74528747685048C1D72E9785425D646A.jpg\" width=\"614\" height=\"347\"><br></div><div><br></div><div>So:</div><div><br></div><div><img src=\"quiver-image-url/539A3482A80ADA726536DE9E5112F60A.png\" alt=\"render007.png\" width=\"960\" height=\"540\"><br></div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

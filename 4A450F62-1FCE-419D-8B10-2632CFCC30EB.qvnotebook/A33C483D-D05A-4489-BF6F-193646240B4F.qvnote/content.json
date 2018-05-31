@@ -1,0 +1,9 @@
+{
+  "title": "Hints and shortcuts",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Press ‘W’ to bring up the specials menu:<div><br></div><div><img src=\"quiver-image-url/B685C74E9206DC3658F57C8041F43FD0.jpg\" width=\"333\" height=\"609\"><br></div><div>This will be very handy if I can just remember to use it.</div><div><br></div><div>Another hint I have discovered. Proportional Editing. Set this in edit mode and when you move vertex, it moves others around it proportionatly depending on the range you select (use mouse wheel while moving the point).</div><div><br></div><div><img src=\"quiver-image-url/3CD7F787AF7CBF60F303A47D471A092A.jpg\" width=\"299\" height=\"189\"><br></div><div><br></div><div>The circle indicates how far the influence is from the vertex</div><div>(or vertecies) you select.</div><div><img src=\"quiver-image-url/D08159D1D4B3FB74AEE3D7B099A2998C.jpg\" width=\"353\" height=\"365\"><br></div><div><br></div><div>Isolate parts of the model by hitting ‘H’ to hide the selected, ‘shift H’ to hide everything except the selected, and</div><div>‘Alt H’ to show everything.</div><div><br></div><div>‘Alt B’ allows you to draw a box around any part of the model hiding everything outside the box. ‘Alt B’ again reverses the effect.</div><div><br></div><div>‘Shift - S’ allows you move to cursor to various locations — very handy.</div><div>‘Alt - M’ to merge two vertices together.</div><div><br></div>"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Solved issue with deleting Box2D physics bodies in libGDX",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Was having trouble deleting physics bodies in the Android SteamBot game. I could delete the textures of obstacles, but the bodies would remain in that the Bot would bounce off of invisible objects.<div><br></div><div>Turns out you can’t delete physics bodies when physics simulation is in progress (who knew??). Finally discovered a way to do it which is explained in the SteamBot - Android Notebook</div><div><br></div>"
+    }
+  ]
+}

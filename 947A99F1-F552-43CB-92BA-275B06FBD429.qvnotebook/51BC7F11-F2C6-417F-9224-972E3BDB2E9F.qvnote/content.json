@@ -1,0 +1,9 @@
+{
+  "title": "Calculating steam level when powering bot",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Tuesday, June 27, 2017 8:54</b><div>Have been calculating how to change level of steam when powering the bot. In the past have used the time setting in the update() method to synchronize between devices of different speeds. In my objective-c/cocos2d version the time setting was the time between each loop of the update method. Found out in spritekit this is not the case. The time in the update loop is just the current time in seconds (very big number). Once I figured this out I save the time in one loop and subtracted that from the time in the next loop to get the time between each loop. Finally got it to work.</div>"
+    }
+  ]
+}

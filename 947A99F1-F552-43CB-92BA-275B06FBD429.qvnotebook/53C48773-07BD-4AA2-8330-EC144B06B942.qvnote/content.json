@@ -1,0 +1,9 @@
+{
+  "title": "Partial solutions to obstacles off screen",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Wednesday July5, 2017<div>Have succeeded more or less to get the obstacles to disappear off the top and bottom of the screen and reappear when they come back on screen.</div><div><br></div><div>Still having a problem with the water drops. Getting multiple ones on top of each other both on the bottom and the top of the screen.</div>"
+    }
+  ]
+}

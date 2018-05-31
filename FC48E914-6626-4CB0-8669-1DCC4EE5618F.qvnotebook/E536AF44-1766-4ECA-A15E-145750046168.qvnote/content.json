@@ -1,0 +1,9 @@
+{
+  "title": "Initial Design",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Using this as an example to start with:<div><a href=\"http://www.refletcommunication.com/en/passion\">http://www.refletcommunication.com/en/passion</a><br></div><div><br></div><div>Would like to have all elements animate on to page. Main text animates up from below bottom when menu item clicked.</div>"
+    }
+  ]
+}

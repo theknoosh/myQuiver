@@ -1,0 +1,13 @@
+{
+  "title": "Photorealism Tips",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<ol><li>Modeling<br></li><ol><li>Match proportions</li><ol><li>Keep in real world units</li><li>(Set units under scene Metric/Imperial)</li><li>Measure real world objects</li><li>Look up measurements online</li></ol><li>No sharp edges</li><ol><li>Put bevel modifier on everything</li></ol><li>Use real world reference (physical object if possible - go out and take pictures)</li><li>Know your anatomy</li></ol><li>Materials</li><ol><li>Use physicaly accurate shaders (unbiased - cycles render ti unbiased)</li><ol><li>cycles render still needs modification)</li><li>find out what frainel is</li></ol><li>variants of materials<br></li><ol><li>different reflection on part as opposed to other</li><li>different variants of color</li></ol><li>Use PBR Maps</li><ol><li>Different textures used together</li><ol><li>different bumps</li><li>different color variants</li></ol></ol><li>Poliigon (paid site)</li><li>Use CrazyBump</li><li>Surface imperfections</li><ol><li>Scratches, dents</li><li>finger prints</li><li>water spots</li><li>dust</li><li>dirt</li><li>sun fading</li></ol><li>Research “overlays\"</li></ol><li>Lighting</li><ol><li>&nbsp;Match color, direction and intensity of real life</li><li>Light direction</li><li><br></li></ol><li>Post Processing</li></ol>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Transferring data from one VC to another",
+  "cells": [
+    {
+      "type": "text",
+      "data": "When segueing from one VC to another, at the point of segue, we want to transfer some information from the caller to the called. This is done with prepareForSeque.<div><br></div><div>First created a model for the data:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "//\n//  Player.swift\n//  app-swoosh\n//\n//  Created by Darrell Payne on 11/26/17.\n//  Copyright © 2017 Darrell Payne. All rights reserved.\n//\n\nimport Foundation\n\nstruct Player {\n    var desiredLeague: String?\n    var selectedSkillLevel: String?\n    \n}"
+    },
+    {
+      "type": "text",
+      "data": "Created an object of type player and initialized it in LeagueVC"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "    var player:Player!\n    \n    override func viewDidLoad() {\n        super.viewDidLoad()\n        \n        player = Player();\n\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Create the same kind of var in SkillVC"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "var player: Player!"
+    },
+    {
+      "type": "text",
+      "data": "Created this code in LeagueVC:<div>This code is called AUTOMATICALLY when we attempt a segue elsewhere.</div><div>It attempts to grab the called VC and store it in skillVC. Once it has the code for skillVC it accesses the variable we created in SkillVC and copies the data from LeagueVC into SkillVC.&nbsp;</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func prepare(for segue: UIStoryboardSegue, sender: Any?) {\n        if let skillVC = segue.destination as? SkillVC {\n            skillVC.player = player\n        }\n    }"
+    }
+  ]
+}

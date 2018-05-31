@@ -1,0 +1,23 @@
+{
+  "title": "Want to remove video from page when it is finished playing.",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Haven’t tried it yet but have found the following possible answers.<div>The idea being to put a video banner on the top of the site, but when finished, replace it with a static image.<br><div><br></div><div>First answer:</div><div><span style=\"color: rgb(36, 39, 41); font-family: Arial, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; font-size: 15px; font-variant-ligatures: normal; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">You can add an event listener with 'ended' as first param:</span><br></div></div>"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<video src=\"video.ogv\" id=\"myVideo\">\n  video not supported\n</video>\n\n<script type='text/javascript'>\n    document.getElementById('myVideo').addEventListener('ended',myHandler,false);\n    function myHandler(e) {\n        // What you want to do after the event\n    }\n</script>"
+    },
+    {
+      "type": "text",
+      "data": "Basically the same below with slightly different format:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<video src=\"video.ogv\">\n     video not supported\n</video>\n\n<script>\n    var video = document.getElementsByTagName('video')[0];\n\n    video.onended = function(e) {\n      /*Do things here!*/\n    };\n</script>"
+    }
+  ]
+}

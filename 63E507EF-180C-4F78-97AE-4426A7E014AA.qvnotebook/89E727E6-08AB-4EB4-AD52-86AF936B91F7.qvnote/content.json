@@ -1,0 +1,99 @@
+{
+  "title": "Initial Tableview Setup",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Created a standard single View app. As we want the initial screen to be a tableView, have the change the inheritance from:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "class ViewController: UIViewController {\n\n// to:\n\nclass ViewController: UITableViewController {"
+    },
+    {
+      "type": "text",
+      "data": "Which will cause the app to crash<div>Need to add the following to the appDelegate:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {\n        \n        // This overrides the settings that use the storyboard\n        window = UIWindow()\n        window?.makeKeyAndVisible()\n        \n        window?.rootViewController = ViewController()\n        \n        return true\n    }"
+    },
+    {
+      "type": "text",
+      "data": "This would ordinarily be handled by the storyboard, but we are doing everything in code here!<div><br></div><div>We want a navigation bar on the tableView, so make the following changes to appDelegate:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {\n        \n        window = UIWindow()\n        window?.makeKeyAndVisible()\n        \n        // Create navigation controller\n        let navController = UINavigationController(rootViewController: ViewController())\n        \n        // Load navigation controller instead of viewController\n        window?.rootViewController = navController\n        \n        return true\n    }"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/A77AE777672EB1D6F5A5130806E30DC7.jpg\" width=\"326\" height=\"603\"><div>Faint lines for tableView, and empty navigation controller on top</div><div><br></div><div>Back in the viewController, added a title and make it big:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "    override func viewDidLoad() {\n        super.viewDidLoad()\n        \n        navigationItem.title = \"Contacts\"\n        navigationController?.navigationBar.prefersLargeTitles = true\n        \n    }"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/FAB158311051D2C5932DA5F54174C5B0.jpg\" width=\"323\" height=\"564\"><div><br></div><div>Created the standard code for a tableView, using dummy information:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "class ViewController: UITableViewController {\n\n    let cellID = \"cellID\"\n    \n    override func viewDidLoad() {\n        super.viewDidLoad()\n        \n        navigationItem.title = \"Contacts\"\n        navigationController?.navigationBar.prefersLargeTitles = true\n        \n        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)\n        \n    }\n    \n    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {\n        return 10\n    }\n    \n    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {\n            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)\n        cell.textLabel?.text = \"something or another\"\n        return cell\n    }\n\n\n}"
+    },
+    {
+      "type": "text",
+      "data": "Which gives us this:<div><br></div><div><img src=\"quiver-image-url/1DABD6F66F97F1AA8A0638E6D7CE72FC.jpg\" width=\"321\" height=\"565\"><br></div><div><br></div><div>By adding sections to the layout (manually adding two), I get duplicates of each section:</div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func numberOfSections(in tableView: UITableView) -> Int {\n        return 2\n    }"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/EE933AFEE2F4D9B8E84CA569413975F1.jpg\" width=\"319\" height=\"561\"><div>This is hard to read without some kind of divider between the sections.</div><div>So we add a header to the sections. This is just hard wired in this instance:</div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {\n        let label = UILabel()\n        label.text = \"Header\"\n        return label\n    }"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/5473609D9270955ECD9BA15901EA27A2.jpg\" width=\"318\" height=\"571\"><div>Not too exciting, but at least there is a separation.</div><div>To get different data in each section, I first create a second list:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "    let anotherListOfNames = [\"Carl\",\"Chris\"]"
+    },
+    {
+      "type": "text",
+      "data": "Then add code to get count of each list separately:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {\n        if section == 0 {\n            return names.count\n        }\n        return anotherListOfNames.count\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Last we need code to select which list we want to use in each section:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {\n            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)\n        \n//        let name = names[indexPath.row]\n        \n        let name = indexPath.section == 0 ? names[indexPath.row] : anotherListOfNames[indexPath.row]\n        \n        cell.textLabel?.text = \"\\(name) -- Section:\\(indexPath.section) Row:\\(indexPath.row)\"\n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/C4CA0625BE81F53A934B1882B3583188.jpg\" width=\"327\" height=\"565\">"
+    }
+  ]
+}

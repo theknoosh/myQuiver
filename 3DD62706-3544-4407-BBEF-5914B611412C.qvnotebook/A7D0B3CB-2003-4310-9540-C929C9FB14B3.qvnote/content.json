@@ -1,0 +1,9 @@
+{
+  "title": "New Strategy going forward",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Have noticed that I have gotten a LOT of downloads in China. Though I don’t see those users showing up in Game Center. Maybe Game Center is not used in China.&nbsp;<div><br></div><div>Anyway, I have decided to use the old version Mechbot to promote the new version of SteamBot. I plan to complete the last version of MechBot (I had made a lot of changes before I decided to start over) and push it up as a free app. In the description I will promote a more advanced version (SteamBot), maybe for $.99.&nbsp;</div><div><br></div><div>Problem being I had made a lot of changes in the MechBot that have never been completed. I will have to get all that done and pushed up to the App Store before I finish SteamBot. Fortunately, it still loads and runs on all phones and works fine in Xcode.</div><div><br></div><div>Found the SpriteBuilder still runs as well. Fortunately Objective C has not changed all that much in the last three years. Unfortunately, everyone is now using Swift and I’m going to have some difficulties getting assistance with problems such as in-app purchases.</div><div><br></div><div>Also need to figure out what to do with new features such as gem collecting and the new scoring system. Hopefully, I don’t screw that up and anger current game players.</div><div><br></div><div>Also have to make sure that my localization is done correctly, especially in Chinese. Might need to invest in a translation service.</div>"
+    }
+  ]
+}

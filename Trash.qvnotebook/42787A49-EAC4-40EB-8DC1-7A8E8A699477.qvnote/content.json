@@ -1,0 +1,14 @@
+{
+  "title": "Shaking behavior from old version of game",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "      // Increase pressure on ball\n        currPressure += 0.2f;\n        \n        // Shake SteamBot after pressure hits\n        if(currPressure > 115)\n        {\n            if (shakeDelay > SHAKE) {\n\n                shakeDelay = 0;\n                // Get current position of steamBot and convert to CGPoints\n                b2Vec2 ballP = [ball physicsPosition];\n                CGPoint ballC = ccpMult(CGPointMake(ballP.x, ballP.y), PTM_RATIO);\n                \n                // Shake distance\n                float shakeOffset = currPressure/50;\n                \n                if(toggle)\n                {\n                    [ball setPhysicsPosition:b2Vec2FromCC(ballC.x + shakeOffset, ballC.y)];\n                }\n                else\n                {\n                     [ball setPhysicsPosition:b2Vec2FromCC(ballC.x - shakeOffset, ballC.y)];\n                }\n                toggle = !toggle;\n            } else ++shakeDelay;\n        }"
+    },
+    {
+      "type": "text",
+      "data": "Would like to repurpose this code to use as a shock behavior when steamBot is hit by electric fence.\u001a"
+    }
+  ]
+}

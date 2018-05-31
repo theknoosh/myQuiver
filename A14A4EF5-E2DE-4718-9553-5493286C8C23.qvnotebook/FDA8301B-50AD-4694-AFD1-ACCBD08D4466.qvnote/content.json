@@ -1,0 +1,27 @@
+{
+  "title": "8. Problem with landscape layout",
+  "cells": [
+    {
+      "type": "text",
+      "data": "In portrait mode, everythings looks fine. But when the phone is tilted to landscape, I get this:<div><br></div><div><img src=\"quiver-image-url/22E1745212EB80BCAFB39767B9FF89B8.jpg\" width=\"625\" height=\"307\"><br></div><div><br></div><div>Not good. But surprisingly easy to fix. Just added this code:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {\n   collectionViewLayout.invalidateLayout()\n}"
+    },
+    {
+      "type": "text",
+      "data": "This is called when the phone changes orientations. I called this function:<div><div>&nbsp; &nbsp;collectionViewLayout.invalidateLayout()</div><div>This forces the phone to recalculate the dimensions of the phone:</div></div><div><br></div><div><img src=\"quiver-image-url/DBF4614944720515DF6230EE736FCA97.jpg\" width=\"621\" height=\"302\"><br></div><div><br></div><div>Problem solved. Almost. Still have the problem when the screen is first switched:</div><div><img src=\"quiver-image-url/A73102060881AAD12A41B09B7B8A940F.jpg\" width=\"614\" height=\"298\"><br></div><div><br></div><div>The layout is still not quite right. This happens both ways. Swiping either way fixes this but we don’t want to see this in the first place.</div><div>This requires an adjustment to the viewWillTransition function as follows:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {\n        coordinator.animate(alongsideTransition: { (_) in\n            self.collectionViewLayout.invalidateLayout()\n            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)\n            self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)\n            \n        }) { (_) in\n            \n        }\n    }"
+    },
+    {
+      "type": "text",
+      "data": "This uses the coordinator.animate function that not only invalidates the collectionViewLayout, but also runs an animation to assure that the view is where it is supposed to be. Note that is a completion handler that is not used here.<div>This fixes all of the bugs, I think.</div>"
+    }
+  ]
+}

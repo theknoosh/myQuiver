@@ -1,0 +1,59 @@
+{
+  "title": "7. Adding bottom controls",
+  "cells": [
+    {
+      "type": "text",
+      "data": "This was done previously, when everything was in the ViewController. First need to copy function that lays out the bottom controller from the ViewController to the SwipingController:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "fileprivate func setupBottomControls(){\n        \n        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton,pageControl,nextButton])\n        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false\n        bottomControlsStackView.distribution = .fillEqually\n        view.addSubview(bottomControlsStackView)\n        \n        NSLayoutConstraint.activate([\n            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),\n            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),\n            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),\n            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)\n            \n            ])\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Now need to copy the previousButton, the nextButton and pageControls in the same way:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": " private let previousButton: UIButton = {\n        let button = UIButton(type: .system)\n        button.setTitle(\"PREV\", for: .normal)\n        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)\n        button.setTitleColor(.gray, for: .normal)\n        button.translatesAutoresizingMaskIntoConstraints = false\n        return button\n    }()\n    \n    private let nextButton: UIButton = {\n        let button = UIButton(type: .system)\n        button.setTitle(\"NEXT\", for: .normal)\n        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)\n        //    let pinkColor = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)\n        button.setTitleColor(.mainPink , for: .normal)\n        button.translatesAutoresizingMaskIntoConstraints = false\n        return button\n    }()\n    \n    let pageControl: UIPageControl = {\n        let pc = UIPageControl()\n        pc.currentPage = 0\n        pc.numberOfPages = 4\n        pc.currentPageIndicatorTintColor = .mainPink\n        let tintColor = UIColor(red: 249/255, green: 207/255, blue: 224/255, alpha: 1)\n        pc.pageIndicatorTintColor = tintColor\n        return pc\n    }()"
+    },
+    {
+      "type": "text",
+      "data": "This gives us the controlls the same as when they were in the ViewController:<div><br></div><div><img src=\"quiver-image-url/7CD2252F15CA973E285015552A5A432B.jpg\" width=\"297\" height=\"602\"><br></div><div><br></div><div>Unfortunately, none of the buttons working, nor do the dots move.</div><div><br></div><div>Have added this code to the previous button:</div><div>The #selector(handlePrevious) specifies which function to call when button is pressed:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "button.addTarget(self, action: #selector(handlePrevious), for: .touchUpInside)"
+    },
+    {
+      "type": "text",
+      "data": "Same for next button:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)"
+    },
+    {
+      "type": "text",
+      "data": "Here are the two functions needed:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "@objc private func handleNext(){\n  let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)\n  let indexPath = IndexPath(item: nextIndex, section: 0)\n  pageControl.currentPage = nextIndex\n  collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)\n}\n    \n@objc private func handlePrevious(){\n  let prevIndex = max(pageControl.currentPage - 1, 0)\n  let indexPath = IndexPath(item: prevIndex, section: 0)\n  pageControl.currentPage = prevIndex\n  collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)\n}"
+    },
+    {
+      "type": "text",
+      "data": "Note the line:<div><div>&nbsp; &nbsp; &nbsp; &nbsp;let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)</div><div>in handleNext and the line:</div></div><div><div>&nbsp; &nbsp; let prevIndex = max(pageControl.currentPage - 1, 0)</div><div><br></div><div>The first one prevents nextIndex from going beyond the number of pages (thus avoiding a crash)</div><div>and the other prevents prevIndex from going below 0</div><div>pageControl.currentPage = prevIndex changes to dots in the pageControl control</div></div><div><br></div><div>Next we want to dots to move when the page is swiped as well as when the button is pressed.</div><div>The code below does this:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {\n        \n    let x = targetContentOffset.pointee.x\n    pageControl.currentPage = Int(x / view.frame.width)\n    print(x, view.frame.width, x/view.frame.width)\n}"
+    }
+  ]
+}

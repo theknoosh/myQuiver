@@ -1,0 +1,40 @@
+{
+  "title": "BUG: Glowing on SteamBot does not stop when the bot exits the burners",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Code that activates the glowing effect:"
+    },
+    {
+      "type": "text",
+      "data": "In the SteamBot class in the drawBot method:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public void drawBot(SpriteBatch batch){\n\n    botElapsedTime += Gdx.graphics.getDeltaTime();\n  \n    if (powerOn){\n        batch.draw(botSteamAnimation.getKeyFrame(botElapsedTime, true),\n                steamBody.getX(), steamBody.getY() - 200.0f);\n    }\n  \n    batch.draw(steamValve,steamValve.getX(),steamValve.getY());\n  \n    if (onBurner || onPortableBurner){ // Animated rings when on initial burner or any portable burner\n        glowRing(batch);\n    }\n  \n    batch.draw(steamLeftEar, steamLeftEar.getX(),steamLeftEar.getY());\n    batch.draw(steamRightEar, steamRightEar.getX(), steamRightEar.getY());\n    batch.draw(steamBody,steamBody.getX(),steamBody.getY());\n    batch.draw(steamLeftEye,steamLeftEye.getX(),steamRightEye.getY());\n    batch.draw(steamRightEye,steamRightEye.getX(),steamRightEye.getY());\n}"
+    },
+    {
+      "type": "text",
+      "data": "The specific code is:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "if (onBurner || onPortableBurner){ // Animated rings when on initial burner or any portable burner\n        glowRing(batch);\n}"
+    },
+    {
+      "type": "text",
+      "data": "So, specifically, if either onBurner or onPortableBurner is true, then the Bot will glow.<div><br></div><div>So I suspect one of these is not switchng off when the bot leaves the burner.</div><div><br></div><div>Tentatively fixed by adding the following to the update method in the GamePlay class:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "if (targetObstacle.distanceFromBot.y > 200.0f){\n    steamBot.onPortableBurner = false;\n    isOnPortableBurner = false;\n}\nif (targetObstacle.distanceFromBot.y < 60.0f) {\n    steamBot.burnerBounce();\n}"
+    },
+    {
+      "type": "text",
+      "data": "The first if statement controls when the glow occurs, while the second one controls when the bot bounces. The first range is a lot larger so that the glow doesn’t stop too soon. These if statements are on both the left and right portable burners."
+    }
+  ]
+}

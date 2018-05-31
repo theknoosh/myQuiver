@@ -1,0 +1,36 @@
+{
+  "title": "SteamBot colliding with water bubbles",
+  "cells": [
+    {
+      "type": "text",
+      "data": "I have a function in the game that when the steambot hits a water bubble, the water bubble makes a “plop” sound, it disappears (permanently) and then water is added to the water vial.<div><br></div><div>This already works in the Spritekit version of the game, but I’m having a lot of trouble in the Android version.</div><div>After weeks of struggle, I have managed to get the game to detect when the bot collides with the water bubble, but that is it.</div><div><br></div><div>I do not want the water bubble object to disappear completely, as I want it to continue to take up space, just that the water bubble should no longer be visible. I had originally planned to remove the sprite of the bubble inside the water bubble class, but now the water bubble is an animation, not a sprite. I thought maybe I can add a boolean that tells the bubble class to just not draw the bubble, but am afraid the &nbsp;collision will still occur, even if you can’t see the bubble.</div><div><br></div><div>Maybe I should be looking at the obstacleController instead as it handles such things.&nbsp;</div><div><br></div><div>Here is the tentative solution I have found. In WaterBubble.java I have added the following property:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public boolean bubbleExists = true;"
+    },
+    {
+      "type": "text",
+      "data": "In the draw function of the same class:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public void draw (SpriteBatch batch){\n        if (bubbleExists) {\n            deltaTime += Gdx.graphics.getDeltaTime();\n            batch.draw(bubbleAnimation.getKeyFrame(deltaTime, true),\n                    position.x - (bubbleWidth / 2), position.y);\n        }\n//        dot.setPosition(position.x - (bubbleWidth / 2), position.y);\n//        dot.draw(batch);\n\n    } // Draw"
+    },
+    {
+      "type": "text",
+      "data": "The bubble does not draw unless the bubbleExists property is set to true.<div><br></div><div>In ObstacleController.java in the inRange method:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "else if (c.getClass().getName().equals(\"obstacles.WaterBubble\")){\n    WaterBubble waterBubble = (WaterBubble) c;\n    if (waterBubble.bubbleExists) {\n        targetObstacle = getTargetObstacle(waterBubble.serialNumber);\n        Vector2 waterBubblePos = new Vector2(waterBubble.getPosition().x, waterBubble.getPosition().y + (waterBubble.getBubbleWidth() / 2));\n        botPos.set(thisBot.getVector().x + (thisBot.getSize().x / 2),thisBot.getVector().y + (thisBot.getSize().y / 2));\n        distance = getDistance(botPos, waterBubblePos);\n        distance.x = Math.abs(distance.x);\n        distance.y = Math.abs(distance.y);\n        if (distance.y < thisBot.getSize().y && distance.x < thisBot.getSize().y){\n\n            // Waterbubble collision occurred - delete waterbubble\n            waterBubble.bubbleExists = false; // Do not draw the bubble\n            targetObstacle.distanceFromBot = distance;\n            return targetObstacle;\n        }\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "If steamBot collides with the waterBubble, it’s bubbleExists property is set to false. This causes the bubble not to be drawn. This property is also used to stop collisions from taking place when the bubble is not on screen.<div><br></div><div>This seems to work. All I have to do now is add water to the vial when all this happens.</div>"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "CCActionSequence - running a series of functions or actions one after another",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "        CCActionMoveTo *moveBack3 = [CCActionMoveTo actionWithDuration:0.5 position:pos]; // This is an action\n\n        id callMethod = [CCActionCallFunc actionWithTarget:self selector:@selector(KillFlyOuts)]; // This runs a function\n        \n        [_flyoutStatsButton runAction:[CCActionSequence actions:moveBack3,callMethod, nil]]; // Both run here\n"
+    }
+  ]
+}

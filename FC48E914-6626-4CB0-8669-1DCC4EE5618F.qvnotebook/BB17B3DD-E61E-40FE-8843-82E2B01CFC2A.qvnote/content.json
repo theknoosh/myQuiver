@@ -1,0 +1,50 @@
+{
+  "title": "Experimenting on nav bar design",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Below is boilerplate html just as a starting point:"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<div class=\"navigation\">\n  <section class=\"layout\">\n    <ul class=\"nav\">          \n        <ul>\n          <li><a href=\"#\">Home</a></li>\n          <li><a href=\"#\">About Us</a></li>\n          <li><a href=\"#\">Speakers</a></li>\n          <li><a href=\"#\">Sponsors</a></li>\n          <li><a href=\"#\">Contact Us</a></li>\n        </ul>\n    </ul> <!-- nav -->\n  </section> <!-- layout -->\n</div> <!-- navigation -->"
+    },
+    {
+      "type": "text",
+      "data": "Have not been able to do anything with the classes listed above and really don’t know what they are for at the moment. But below is what the code looks like with no css applied.<div><br></div><div><img src=\"quiver-image-url/DBD5BBAF542A08D5E08B6D21C839EF83.jpg\" width=\"324\" height=\"122\"><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "data": "ul {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n}"
+    },
+    {
+      "type": "text",
+      "data": "This code removes the bullet points:<div><br></div><div><img src=\"quiver-image-url/81986DD90ABAC515D636D32773908F72.jpg\" width=\"229\" height=\"101\"><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "data": "ul {\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    li {\n        float: left;\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "This makes the text display side by side but it looks bad:<div><img src=\"quiver-image-url/07CC6421F183E40F9E28B622F70FA7E0.jpg\" width=\"350\" height=\"69\"><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "data": "ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 35px;\n    background-color: $darkpurple;\n    li {\n        float: left;\n    }\n    li a {\n        display: block;\n        padding: 8px 16px;\n        color: white;\n        text-decoration: none;\n        text-align: center;\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "Ok, this is mostly complete. Added a background color, added padding so the text doesn’t run together, and made the text white.<div><br><div><img src=\"quiver-image-url/D87920166EF9E01E955A0647E43EF278.jpg\" width=\"520\" height=\"79\"><br></div><div><br></div><div>Last on this run through added a hover color:</div></div>"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "data": "ul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    width: 100%;\n    height: 35px;\n    background-color: $darkpurple;\n    li {\n        float: left;\n    }\n    li a {\n        display: block;\n        color: white;\n        padding: 8px 16px;\n        text-decoration: none;\n        text-align: center;\n    }\n    li a:hover {\n        background-color: tomato;\n    }\n}"
+    }
+  ]
+}

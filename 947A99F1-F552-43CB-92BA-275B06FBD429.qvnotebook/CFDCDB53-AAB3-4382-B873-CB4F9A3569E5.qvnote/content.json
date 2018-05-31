@@ -1,0 +1,9 @@
+{
+  "title": "Added camera to game",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><b>Friday, June 23, 2017 6:41pm</b></div>Have it now configured that if the bot is midway up screen from bottom,<div>camera will follow it from that point on</div>"
+    }
+  ]
+}

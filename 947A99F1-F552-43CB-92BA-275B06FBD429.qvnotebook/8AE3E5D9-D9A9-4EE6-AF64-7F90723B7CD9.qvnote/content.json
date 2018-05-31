@@ -1,0 +1,9 @@
+{
+  "title": "Main Menu redesigned",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Tuesday, June 27, 2017 2:24pm</b><div>Have completed the new design (for now) of the main menu. Is not yet functioning. Not happy with the way the buttons work, but will look at that later. Both water and steam vials are in place and the animation works, but are not hooked up to code.</div>"
+    }
+  ]
+}

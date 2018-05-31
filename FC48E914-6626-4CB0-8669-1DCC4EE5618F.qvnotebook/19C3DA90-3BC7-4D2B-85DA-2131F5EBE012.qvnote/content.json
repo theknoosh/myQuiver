@@ -1,0 +1,27 @@
+{
+  "title": "CSS Animation techniques",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Simple Animation:<div>HTML:</div>"
+    },
+    {
+      "type": "code",
+      "language": "html",
+      "data": "<html>\n\t<head>\n\t\t<title>Transition Basics</title>\t\t\n\t\t<link rel=\"stylesheet\" href=\"styles.css\" media=\"all\" />\n\t</head>\n\t<body>\n\t\n\t<div class=\"wrapper\">\n\t\t<h2></h2>\n\t\t<p>Roll into the future right now and buy your very own robot!</p>\n\t\t<button>BUY NOW</button>\n\t</div>\n\t\n\t</body>\n</html>\n"
+    },
+    {
+      "type": "text",
+      "data": "CSS:"
+    },
+    {
+      "type": "code",
+      "language": "css",
+      "data": "@import url(https://fonts.googleapis.com/css?family=Lato:400,900,300,300italic,400italic,900italic);\n\nbody {\n\tbackground-color: #f7e4fe; \n\tbackground-image: url('purple_diag_background.svg');\n\tbackground-size: cover;\n\tbackground-position: 0 -50px;\n\tfont-family: 'Lato', arial, helvetica, sans-serif;\n\tfont-size: 1.6rem;\n\tfont-weight: 300;\n}\n\n.wrapper {\n\tmargin: 12em auto 2em auto;\n\twidth:80%;\n\tposition:relative;\n\t\n\t/* perspective keyword required when using 3d elements */\n  perspective: 500px;\n}\n\np {\n\tcolor: white;\n\ttext-align: center;\n}\n\nbutton {\n\tcursor: hand;\n\tbackground-color: #ff8d35;\n\tcolor: white;\n\tfont:weight: 900;\n\tfont-size: 1.2rem;\n\tborder: none;\n\tpadding:1em 3em;\n\tmargin: 2em auto;\n\tdisplay:block;\n    \n  /* The transition below determines how animation on it runs */\n  /* such as animation duration, easing, etc. */\n  transition: background .5s ease-in, transform .5s ease-in-out;\n}\n\nbutton:hover {\n\tbackground: #c61140;\n\ttransform: scale(1.2);\n  transform: rotateY(45deg);\n}"
+    },
+    {
+      "type": "text",
+      "data": "Results:<div><img src=\"quiver-image-url/899AD62D6795C9804248227080ED1DB6.gif\" alt=\"webScreen01.gif\" width=\"654\" height=\"382\"><br></div>"
+    }
+  ]
+}

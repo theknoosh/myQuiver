@@ -1,0 +1,31 @@
+{
+  "title": "Rotating 3d cube — possible solution",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgb(0, 0, 0); font-family: 'helvetica neue', sans-serif; line-height: 18.2px; widows: 1; background-color: rgb(255, 255, 255);\">hi , I was looking for a way to rotate an object on my android app . I found a helpful video on youtube with this script . the script works right except I need to comment out the raycasting condition , it doesn't work with raycasting and so the object rotates by touching anywhere on the screen and not just by touching the object . do you see anything wrong or have any suggestions on how to make it work with raycasting? tnx . here's the code :&nbsp;</span>"
+    },
+    {
+      "type": "text",
+      "data": "The code below seems to be in Javascript:"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "var targetItem : GameObject;\n var GUICamera : Camera;\n var ambient : GameObject;\n \n \n /********Rotation Variables*********/\n var rotationRate : float = 1.0;\n private var wasRotating;\n \n /************Scrolling inertia variables************/\n private var scrollPosition : Vector2 = Vector2.zero;\n private var scrollVelocity : float = 0;\n private var timeTouchPhaseEnded: float;\n private var inertiaDuration : float = 0.5f;\n \n private var itemInertiaDuration : float = 1.0f;\n private var itemTimeTouchPhaseEnded: float;\n private var rotateVelocityX : float = 0;\n private var rotateVelocityY : float = 0;\n \n \n var hit: RaycastHit;\n \n private var layerMask = (1 <<  8) | (1 << 2);\n //private var layerMask = (1 <<  0);\n \n \n function Start()\n {\n     layerMask =~ layerMask;    \n }\n \n function FixedUpdate()\n {\n     \n     if (Input.touchCount > 0) \n     {        //    If there are touches...\n             var theTouch : Touch = Input.GetTouch(0);        //    Cache Touch (0)\n             \n             var ray = Camera.main.ScreenPointToRay(theTouch.position);\n             var GUIRayq = GUICamera.ScreenPointToRay(theTouch.position);\n             \n                 \n              if(Physics.Raycast(ray,hit,50,layerMask))\n              {    \n \n                 if(Input.touchCount == 1)\n                         {\n                             \n                             if (theTouch.phase == TouchPhase.Began) \n                              {\n                                  wasRotating = false;    \n                              }        \n                              \n                              if (theTouch.phase == TouchPhase.Moved) \n                              {\n                                   \n                                  targetItem.transform.Rotate(0, theTouch.deltaPosition.x * rotationRate,0,Space.World);\n                                  wasRotating = true;\n                              }        \n              \n             }\n \n \n             \n                         \n             \n     }}"
+    },
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgb(0, 0, 0); font-family: 'helvetica neue', sans-serif; line-height: 18.2px; widows: 1; background-color: rgb(235, 255, 230);\">thanks for all answers and responds :D the problem was this line :&nbsp;</span><br style=\"color: rgb(0, 0, 0); font-family: 'helvetica neue', sans-serif; line-height: 18.2px; widows: 1; background-color: rgb(235, 255, 230);\"><span style=\"color: rgb(0, 0, 0); font-family: 'helvetica neue', sans-serif; line-height: 18.2px; widows: 1; background-color: rgb(235, 255, 230);\">var GUIRayq = GUICamera.ScreenPointToRay(theTouch.position);</span><br style=\"color: rgb(0, 0, 0); font-family: 'helvetica neue', sans-serif; line-height: 18.2px; widows: 1; background-color: rgb(235, 255, 230);\"><span style=\"color: rgb(0, 0, 0); font-family: 'helvetica neue', sans-serif; line-height: 18.2px; widows: 1; background-color: rgb(235, 255, 230);\">if I comment out this line the script will work , cause I hadn't assigned it and the script would stop at that line .</span>"
+    },
+    {
+      "type": "text",
+      "data": "&nbsp;&nbsp;<span style=\"color: rgb(68, 68, 68); font-family: 'helvetica neue', sans-serif; font-size: 12px; line-height: 16.8px; widows: 1; background-color: rgb(255, 255, 255);\">Just wanted to throw in a quick comment - if you're doing it in C#, don't forget the \"out\" for a ray cast!</span>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": " if(Physics.Raycast(ray, out hit,50f,layerMask)){}"
+    }
+  ]
+}

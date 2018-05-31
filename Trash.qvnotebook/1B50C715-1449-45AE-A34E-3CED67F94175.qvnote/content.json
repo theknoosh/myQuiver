@@ -1,0 +1,29 @@
+{
+  "title": "Intermittent sound error",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<p style=\"margin: 0px; font-size: 11px; line-height: normal; font-family: Menlo;\"><b>OAL Error: +[ALWrapper getSourcei:parameter:]: Invalid Value (error code 0x0000a003)</b></p><p style=\"margin: 0px; font-size: 11px; line-height: normal; font-family: Menlo;\"><b>OAL Warning: -[OALAudioSession onAudioError:]: Received audio error notification, but session is suspended. Doing nothing</b></p>"
+    },
+    {
+      "type": "text",
+      "data": "No idea what this is or why it happens at this time."
+    },
+    {
+      "type": "text",
+      "data": "Found this possiblity on a web site:"
+    },
+    {
+      "type": "text",
+      "data": "<a href=\"https://groups.google.com/forum/#!topic/objectal-for-iphone/tezbcnpJomI\">https://groups.google.com/forum/#!topic/objectal-for-iphone/tezbcnpJomI</a>"
+    },
+    {
+      "type": "text",
+      "data": "<p style=\"padding: 0px; border: 0px; vertical-align: baseline; margin: 1em 0px; line-height: normal; color: rgb(34, 34, 34); widows: 1; background-color: rgb(255, 255, 255);\">I'm wondering if it has to do with exhausting the maximum number of sources that are allowed to play at once. There should be code to guard against that and simply refuse to play the sound, but it may not be working...</p><p style=\"padding: 0px; border: 0px; vertical-align: baseline; margin: 1em 0px; line-height: normal; color: rgb(34, 34, 34); widows: 1; background-color: rgb(255, 255, 255);\">Actually, just on a hunch, can you try setting the reserved sources to 20 and let me know if that solves the problem with the error messages and lag out? If my hunch is correct, it should work all the way up to 28 reserved sources and then crap out starting at 29.</p><p style=\"padding: 0px; border: 0px; vertical-align: baseline; margin: 1em 0px; line-height: normal; color: rgb(34, 34, 34); widows: 1; background-color: rgb(255, 255, 255);\">[OALSimpleAudio sharedInstance].<wbr>reservedSources = 20;</p>"
+    },
+    {
+      "type": "text",
+      "data": "This is unlikely the problem as the default appears to be 32. I have about 10 effects."
+    }
+  ]
+}

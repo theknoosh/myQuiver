@@ -1,0 +1,9 @@
+{
+  "title": "XCode project blowup",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><b>Tuesday, June 27, 2017 9:46am</b></div>Added a SceneKit file by mistake (instead of SpriteKit). Thought it was no big deal and attempted to delete it, which of course crashed xcode over and over again. So I manually deleted the file, and deleted the reference to it in the project. Then I got a warning from Xcode that the file was missing which I could not get rid of. Fortunately, I had a time machine backup done just 40 minutes earlier which I restored. Lost 40 minutes of work, but could have been much worse."
+    }
+  ]
+}

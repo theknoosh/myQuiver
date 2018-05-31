@@ -1,0 +1,32 @@
+{
+  "title": "Starting place with 3 screens built in interface builder",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/3BA0F7725A0DDBCDC12E4253A3CD5830.jpg\" width=\"785\" height=\"475\"><div><br></div><div>GitHub of this project is here:</div><div><a href=\"https://github.com/theknoosh/app-swoosh\">https://github.com/theknoosh/app-swoosh</a><br></div><div><br></div><div>There are several ways to segue from one view controller to another. The simplest is to control-drag from a button to the view controller you want to segue to:</div><div><br></div><div><img src=\"quiver-image-url/DBE4E601F23016E1362B075924AD19CA.jpg\" width=\"517\" height=\"497\"><br></div><div><br></div><div>When you release the mouse, this menu appears:</div><div><br></div><div><img src=\"quiver-image-url/48F6B6D4FD7998DC7520BBEF6AE0AE27.jpg\" width=\"603\" height=\"518\"><br></div><div>You willl usually want to select \"Show\"</div><div><br></div><div>This causes the next view to zoom up from the bottom. Don’t know yet if there are other options for animation, though you can select no animation at all. Also there is no way to get back to the original view. That has to be done by hand in this case:</div><div>Added a custom button with an arrow image and no text:</div><div><br></div><div><img src=\"quiver-image-url/2F7121FF5FB7F4699FB0AB1E965D71AE.jpg\" width=\"330\" height=\"325\"><br></div><div><br></div><div>To get back to the original viewController, add this code to the ORIGINAL ViewController:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "@IBAction func unwindFromSkillVC(unwindSeque: UIStoryboardSegue){\n        \n    }"
+    },
+    {
+      "type": "text",
+      "data": "In the 2nd View, control drag from the back arrow to the \"Exit\"<div><br></div><div><img src=\"quiver-image-url/821DBEDD74C1F03DAF1AD03BA545706C.jpg\" width=\"485\" height=\"458\"></div><div><br></div><div>Release and you will see the code you previously created:<br><div><br></div><div><img src=\"quiver-image-url/610821C63B2D4A18277D4568186C13B8.jpg\" width=\"549\" height=\"474\"><br></div></div><div><br></div><div>And we now have the transition to the second screen and back to the first screen</div><div><br></div><div><img src=\"quiver-image-url/6C0F448338DE2B9E1B1F5C3E17D3FB22.gif\" alt=\"screenTransition.gif\" width=\"270\" height=\"480\"><br></div><div><br></div><div>For the next segue from LeagueVC to SkillVC, we will do this one in code. First create an IBAction from the next button to the LeagueVC viewController:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "@IBAction func onNextTapped(_ sender: Any) {\n        \n}"
+    },
+    {
+      "type": "text",
+      "data": "We will need to add a segue from one viewController to the next in the Storyboard:<div><img src=\"quiver-image-url/AACAB5B07D01A78EA4523EA193890ADB.jpg\" width=\"506\" height=\"400\"><br></div><div>Then select \"show\"</div><div><img src=\"quiver-image-url/9A85506909DB0AD25C8A627FD55273D5.jpg\" width=\"264\" height=\"395\"><br></div><div><br></div><div>This has to be triggered in code, so we need to name the segue:</div><div><br></div><div><img src=\"quiver-image-url/3180DA84CC392E1F7CF1B53B5D11731E.jpg\" width=\"260\" height=\"265\"><br></div><div><br></div><div>Then add one line of code using the above identifier:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": " @IBAction func onNextTapped(_ sender: Any) {\n        \n       performSegue(withIdentifier: \"SkillVCSegue\", sender: self)\n    }"
+    }
+  ]
+}

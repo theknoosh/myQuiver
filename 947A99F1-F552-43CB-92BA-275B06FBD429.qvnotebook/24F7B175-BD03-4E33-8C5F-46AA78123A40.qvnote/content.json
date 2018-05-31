@@ -1,0 +1,27 @@
+{
+  "title": "BUG: Steam level does not stop when water vial is empty",
+  "cells": [
+    {
+      "type": "text",
+      "data": "This is the same code as in bug below:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void buildSteam(float delta) {\n\n        if (gm.waterLevel < 1.0f && gm.steamLevel > 0) {\n\n            gm.steamLevel -= GameInfo.STEAM_SCALE * delta;\n            gm.waterLevel += GameInfo.WATER_SCALE * delta;\n\n        }\n\n    } // buildSteam"
+    },
+    {
+      "type": "text",
+      "data": "Found that the vial kept going past the bottom of the water vial instead of stopping when it should.<div>DIscovered that the vial was scaled by 25%. So instead of being empty at 1, it was actually empty at 0.25. Changed the code to below:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void buildSteam(float delta) {\n\n    // Steam is not full and water is not empty\n    if (gm.waterLevel < (1.0f * 0.25) && gm.steamLevel > 0) {\n\n        gm.steamLevel -= GameInfo.STEAM_SCALE * delta;\n        gm.waterLevel += GameInfo.WATER_SCALE * delta;\n        Gdx.app.log(\"Level\", \"water scale: \" + gm.waterLevel);\n    }\n\n} // buildSteam"
+    },
+    {
+      "type": "text",
+      "data": "Now it works, but slightly off due to the animation. Will need small adjustment so that blue of water does not show.<div>Water bubble still having no effect on water level.</div>"
+    }
+  ]
+}

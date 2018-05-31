@@ -1,0 +1,27 @@
+{
+  "title": "9: Moving code out of SwipingController into external files",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>Finally, to clearn up some of the code, will move some of the functions from the swipingController into external files. This is done with extensions. Extensions is a way generally to add functionality to a class, but can also be used so:</div><div>Create another swift file called SwipingController+extension (Not sure if the +extension is required or just convention). I then move the viewWillTranslate function from SwipingController. This gives an error as pageControl is a private within SwipingController. This is fixed by removing the private from the pageControl variable.</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "\n//  SwipingController+extension.swift\n//  autolayout\n\n//  Created by Darrell Payne on 11/1/17.\n//  Copyright © 2017 Darrell Payne. All rights reserved.\n\n\nimport UIKit\n\nextension SwipingController {\n    \n    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {\n        coordinator.animate(alongsideTransition: { (_) in\n            self.collectionViewLayout.invalidateLayout()\n            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)\n            self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)\n            \n        }) { (_) in\n            \n        }\n    }\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "Additionally, I have created yet another file called SwipingController+UICollectionView (starting to think this is convention) and putting all the collectionView methods there:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "// \n//  SwipingController+UICollectionView.swift\n//  autolayout\n// \n//  Created by Darrell Payne on 11/1/17.\n//  Copyright © 2017 Darrell Payne. All rights reserved.\n// \n\nimport UIKit\n\nextension SwipingController {\n    \n    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {\n        return pages.count\n    }\n    \n    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath) as! PageCell\n        \n        let page = pages[indexPath.item]\n        cell.page = page\n        \n        return cell\n    }\n    \n    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {\n        return 0\n    }\n    \n    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {\n        return CGSize(width: view.frame.width, height: view.frame.height)\n    }\n    \n}\n"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

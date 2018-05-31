@@ -1,0 +1,22 @@
+{
+  "title": "Log messages to console",
+  "cells": [
+    {
+      "type": "text",
+      "data": "After searching for weeks I have found a technique that actually works:<div><br></div><div>Using this command</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "Gdx.app.log(\"DARRELL\", \"Print to console\");"
+    },
+    {
+      "type": "text",
+      "data": "I get this message:<div><br></div><div><div>10-06 18:48:15.445 12293-12321/com.sanctuaryofdarkness.steambot I/DARRELL: Print to console</div></div><div><br></div><div>I filter out everything else with this filter:</div><div><br></div><div><img src=\"quiver-image-url/19D4DED44D01AF3B0DACC6CB66CE4C53.jpg\" width=\"512\" height=\"275\"><br></div><div><br></div><div>Used here:</div><div><img src=\"quiver-image-url/9C9E01BC9DEAF3A6FF9BE80AF733701D.jpg\" width=\"653\" height=\"238\"><br></div><div><br></div><div>In logCat in the Android Monitor. By always using the tag ‘DARRELL’, I can always find the message in the console by filtering out everything else.</div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

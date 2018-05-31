@@ -1,0 +1,9 @@
+{
+  "title": "Design Notes",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Wednesday, June 28th, 2017<div>Changes from previous version of SteamBot (MechBot) to this one:</div><div>Streamlining game play to reduce delays:</div><div><ul><li>Removing the open door animation before the main menu appears; looks nice, but unnecessary delay at game start.<br></li><li>Removing the need to wait for steam to build at game start. Start the game with 50% steam, 100% water — the player can decide if they want to build up more steam or start immediately.</li><li>Reducing the time needed to build up steam on the burners</li><li>Remove the need to wait at end of level to show scores. Will transition to new screen at level end with all specs on screen at once.</li></ul></div><div><br></div>"
+    }
+  ]
+}

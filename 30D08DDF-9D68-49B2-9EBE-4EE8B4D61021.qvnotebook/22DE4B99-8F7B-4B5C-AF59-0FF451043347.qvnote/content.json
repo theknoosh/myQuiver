@@ -1,0 +1,18 @@
+{
+  "title": "Animated ring around Bot",
+  "cells": [
+    {
+      "type": "text",
+      "data": "This was surprisingly difficult when it should have been really easy.&nbsp;<div><br></div><div>Had a problem that I have had over and over again with libGdx. Different objects have different capabilities when it does not make since. In this case I could not add an action to a sprite when it would make perfect sense to be able to do so.</div><div><br></div><div>I got around the problem in this case by changing the ring from a sprite to a image (which oddly enough, you can add an object to.</div><div><br></div><div>LibGdx makes very simple things very complicated. For instance to add an image to a sprite, you can’t just add a graphic to the sprite, you have to add a texture to the sprite and add a graphic to the texture. Unnecessarily complex.</div><div><br></div><div>Anyway, here’s what I did:</div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public class SteamBot {\n  \n  // Ring image\n  private Image botRing;\n  \n  // Actions for ring zoom out, ring zoom in, sequence to put them together,\n  // and repeatAction to repeat the sequence\n  \n  private ScaleToAction botRingScaleAction;\n  private ScaleToAction botRingRevAction;\n  private SequenceAction botRingSequenceAction;\n  private RepeatAction botRingRepeatAction;\n  \n  public SteamBot(World world){\n    \n    // In the constructor:\n    // Initialized the image with the texture with the graphic\n    botRing = new Image(new Texture(\"SteamBot/ring.png\"));\n    \n    // Set the scale so it's smaller than the bot to begin\n    botRing.setScale(0.6f);\n    // Set the origin so it scales from the center\n    botRing.setOrigin(botRing.getWidth() / 2, botRing.getHeight() / 2);\n\n    // Scale the ring up\n    botRingScaleAction = new ScaleToAction();\n    botRingScaleAction.setScale(1.0f);\n    botRingScaleAction.setDuration(0.5f);\n\n    // Scale the ring back down\n    botRingRevAction = new ScaleToAction();\n    botRingRevAction.setScale(0.6f);\n    botRingRevAction.setDuration(0.5f);\n\n    // Connect the two together\n    botRingSequenceAction = new SequenceAction(botRingScaleAction,botRingRevAction);\n\n    // Repeat them forever\n    botRingRepeatAction = new RepeatAction();\n    botRingRepeatAction.setAction(botRingSequenceAction);\n    botRingRepeatAction.setCount(RepeatAction.FOREVER);\n\n    botRing.addAction(botRingRepeatAction);\n    \n  }\n  \n  public void drawBot(SpriteBatch batch){\n    \n    // If the bot is on the burner\n    // draw the ring behind the bot body\n    // Activate the animation\n    if (onBurner){\n      botRing.setPosition(steamBody.getX() - 17.0f,steamBody.getY() - 37.0f);\n      botRing.draw(batch,1.0f);\n      botRing.act(Gdx.graphics.getDeltaTime());\n    }\n  }\n}"
+    },
+    {
+      "type": "text",
+      "data": "And there we have it!<div>Not shown here is all the steps necessary to put the ring in the right position, but that procedure is done the same elsewhere in my code.</div>"
+    }
+  ]
+}

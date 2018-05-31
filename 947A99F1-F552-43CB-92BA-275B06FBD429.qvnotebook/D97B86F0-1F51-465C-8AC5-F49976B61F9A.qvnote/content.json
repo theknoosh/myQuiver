@@ -1,0 +1,9 @@
+{
+  "title": "Working on obstacle creation",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Thursday June29, 2017 6:31pm</b><div>After considerable trial and error, I have succeeded (more or less) in getting the portable burners to work using a springfield. Problem before was that you don’t want to have two springfields on the screen at the same time. The interfere with each other. What I did is just move the one I had used on the initial burner, and turn it down some. After some code to keep the bot centered on the burner, everything seems to mostly work.</div>"
+    }
+  ]
+}

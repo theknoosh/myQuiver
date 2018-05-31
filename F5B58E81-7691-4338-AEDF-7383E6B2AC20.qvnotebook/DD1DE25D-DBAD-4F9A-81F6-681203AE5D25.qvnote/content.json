@@ -1,0 +1,9 @@
+{
+  "title": "Step 5: Wallpaper",
+  "cells": [
+    {
+      "type": "text",
+      "data": "UV Unwrapped the walls of the structure, created a material for just the center wall:<div><br></div><div><img src=\"quiver-image-url/62A095A7F7E8FE3FA854B41AFB83E8A4.jpg\" width=\"904\" height=\"496\"><br></div><div><br></div><div>The center wall as assigned the wallPaper texture and the setting for these is as follows:</div><div><img src=\"quiver-image-url/547DE6B0CF42DC61370E7921F875D24F.jpg\" width=\"267\" height=\"399\"><br></div><div><br></div><div>The Texture Coordinate node and the Mapping node are used together to scale the texture to the size required. The texture (which is black and white) is loaded with the Image Texture node and it is colored using the ColorRamp node. The left side is the forground and the right side is the background</div><div><br></div><div><img src=\"quiver-image-url/87CF07C819E9C668519176209BCDDF2E.jpg\" width=\"886\" height=\"216\"><br></div><div><br></div><div>Render to this point:</div><div><img src=\"quiver-image-url/BDA0D26544BCC6013EFACDFCEF747F01.png\" alt=\"OfficeRender015.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

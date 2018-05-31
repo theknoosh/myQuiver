@@ -1,0 +1,17 @@
+{
+  "title": "Screen sizes and resolution",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<a href=\"https://developer.android.com/guide/practices/screens_support.html\">https://developer.android.com/guide/practices/screens_support.html</a>"
+    },
+    {
+      "type": "text",
+      "data": "<span style=\"color: rgba(0, 0, 0, 0.682353); font-family: Roboto, sans-serif; font-size: 14px; font-variant-ligatures: normal; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">A set of six generalized&nbsp;</span><strong style=\"color: rgba(0, 0, 0, 0.682353); font-family: Roboto, sans-serif; font-size: 14px; font-variant-ligatures: normal; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">densities</strong><span style=\"color: rgba(0, 0, 0, 0.682353); font-family: Roboto, sans-serif; font-size: 14px; font-variant-ligatures: normal; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\">:</span><ul style=\"margin: 6px 0px 6px 20px; padding: 0px; color: rgba(0, 0, 0, 0.682353); font-family: Roboto, sans-serif; font-size: 14px; font-variant-ligatures: normal; line-height: 24px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255);\"><li style=\"margin: 0px 0px 12px;\"><em>ldpi</em>&nbsp;(low) ~120dpi</li><li style=\"margin: 0px 0px 12px;\"><em>mdpi</em>&nbsp;(medium) ~160dpi</li><li style=\"margin: 0px 0px 12px;\"><em>hdpi</em>&nbsp;(high) ~240dpi</li><li style=\"margin: 0px 0px 12px;\"><em>xhdpi</em>&nbsp;(extra-high) ~320dpi</li><li style=\"margin: 0px 0px 12px;\"><em>xxhdpi</em>&nbsp;(extra-extra-high) ~480dpi</li><li style=\"margin: 0px 0px 12px;\"><em>xxxhdpi</em>&nbsp;(extra-extra-extra-high) ~640dpi</li></ul>"
+    },
+    {
+      "type": "text",
+      "data": "Should target hdpi, xhdpi, xxhdpi"
+    }
+  ]
+}

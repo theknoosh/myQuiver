@@ -1,0 +1,9 @@
+{
+  "title": "Step 2: Adding Farmers sign",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Used existing illustrator file of Farmers logo. Save this file as an .svg.<div><img src=\"quiver-image-url/EC7BBD3C92DB53B2D8781963109AAF48.jpg\" width=\"1280\" height=\"773\"></div><div><br></div><div>Import this file into blender.</div><div><br></div><div><img src=\"quiver-image-url/A5932E72AD3D058C125775DC5EAB0B3B.jpg\" width=\"606\" height=\"800\"><br></div><div><br><div>Selected curve section on menu and set extrude there. Found that standard extrusion command did not work and Solidify &nbsp;modifier had uneven results. Also notice that none of the colors were imported. Had to do that after the import. Settings for extrude are below:</div><div><br></div><div><img src=\"quiver-image-url/DA097352EDBFE39B43FCCB58C0972D3B.jpg\" width=\"398\" height=\"529\"><br></div><div>Render to this point:</div><div><img src=\"quiver-image-url/343435B2E10A5AFE5CC0A0E6770E67F3.png\" alt=\"OfficeRender008.png\" width=\"960\" height=\"540\"><br></div><div><br></div><div>Tried changing the color of the columns:</div><div><img src=\"quiver-image-url/2705E1975CD3A102B8F76219D4A25128.png\" alt=\"OfficeRender009.png\" width=\"960\" height=\"540\"><br></div></div>"
+    }
+  ]
+}

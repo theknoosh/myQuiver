@@ -1,0 +1,9 @@
+{
+  "title": "Moving animations and graphics from old app to new app",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><b>Tuesday, June 28, 2017 7:56am</b></div>This is working surprising well, moving graphics and animations done originally for spritebuilder and Cocos2d to sprite kit. Took me over five years to build the original app, will take much less this time around. Have found spritekit is very similar to cocos2d and is actually better with extra features that help reduce the amount of coding I have to do.<div><br></div><div>An instance of this is getting the Bot to bounce when on the burners. I spent weeks coming up with an algorithm to do this the first time. This I used one of spritekits physics field effects — took five minutes. Looks better too.</div><div><br></div><div>Very happy I finally decided to bite the bullet and make the move over to Apple’s technology. I was getting 70 warnings and climbing from cocos2d, now I have none.&nbsp;</div>"
+    }
+  ]
+}

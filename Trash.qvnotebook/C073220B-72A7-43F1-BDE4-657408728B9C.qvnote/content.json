@@ -1,0 +1,10 @@
+{
+  "title": "Running actions or functions in sequence one after another",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "id fontsCallMethod = [CCActionCallFunc actionWithTarget:self selector:@selector(displayInfoLabels)]; // Function\n  CCActionMoveTo *gameMove = [CCActionMoveTo actionWithDuration:0.5 position:ccp(x, y)]; // Action\n\n[_flyoutGameCenterButton runAction:[CCActionSequence actions:gameMove,fontsCallMethod, nil]]; // run action, then function"
+    }
+  ]
+}

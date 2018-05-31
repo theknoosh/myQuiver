@@ -1,0 +1,9 @@
+{
+  "title": "Redesigning obstacles with JSON files and separate classes for obstacles",
+  "cells": [
+    {
+      "type": "text",
+      "data": "In the process of redesigning how obstacles are created and managed. Instead of all work being done in the obstacles class, will have separate classes for each obstacle. These Classes will manage the creation and functioning of each obstacles. The obstacle class will decide which obstacle to use and the JSON file will have the properties needed by the obstacle class."
+    }
+  ]
+}

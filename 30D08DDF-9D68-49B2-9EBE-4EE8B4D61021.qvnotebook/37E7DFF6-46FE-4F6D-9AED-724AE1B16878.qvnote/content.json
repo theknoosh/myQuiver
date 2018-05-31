@@ -1,0 +1,39 @@
+{
+  "title": "Deleting a physics body from the scene",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Can’t delete a physics Body while the simulation is in progress. You need to delete the object in a separate thread that will launch in between world.step functions. This is called in the main render loop."
+    },
+    {
+      "type": "text",
+      "data": "This is the code that actually deletes the body:"
+    },
+    {
+      "type": "text",
+      "data": "This is in the ObstacleController class that is called every loop to see if obstacles need to be deleted (Only for sawBlade obstacles at the moment."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public void  removeOffScreenObstacles(){\n\n    for (int i = 0; i < obstacles.size; i++){\n        if (obstacles.get(i).getClass().getName().equals(\"obstacles.SawBladeLeft\")) {\n            SawBladeLeft obstacle = (SawBladeLeft)obstacles.get(i);\n            if (offTop(obstacle.getPosition().y)){\n                ((SawBladeLeft) obstacles.get(i)).deleteObstacles();\n                destroyBody(((SawBladeLeft) obstacles.get(i)).getBody());\n                obstacles.removeIndex(i);\n            } else if (offBottom(obstacle.getPosition().y)){\n                ((SawBladeLeft) obstacles.get(i)).deleteObstacles();\n                destroyBody(((SawBladeLeft) obstacles.get(i)).getBody());\n                obstacles.removeIndex(i);\n            }\n        } else if (obstacles.get(i).getClass().getName().equals(\"obstacles.SawBladeRight\")) {\n            SawBladeRight obstacle = (SawBladeRight)obstacles.get(i);\n            if (offTop(obstacle.getPosition().y)){\n                ((SawBladeRight) obstacles.get(i)).deleteObstacles();\n                destroyBody(((SawBladeRight) obstacles.get(i)).getBody());\n                obstacle.deleteObstacles();\n                obstacles.removeIndex(i);\n            } else if (offBottom(obstacle.getPosition().y)){\n                ((SawBladeRight) obstacles.get(i)).deleteObstacles();\n                destroyBody(((SawBladeRight) obstacles.get(i)).getBody());\n                obstacle.deleteObstacles();\n                obstacles.removeIndex(i);\n            }\n        }\n    }\n\n}"
+    },
+    {
+      "type": "text",
+      "data": "This calls the individual obstacle class’ .deleteObstacles() function. This deletes the texture, but not the body.<div>It removes the obstacle from the obstacles array.</div><div>It then calls the function to delete the body passing it the body that is return from the individual obstacle.</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void destroyBody(final Body body){\n\n    Gdx.app.postRunnable(new Runnable() {\n        @Override\n        public void run () {\n            world.destroyBody(body);\n        }\n    });\n}"
+    },
+    {
+      "type": "text",
+      "data": "This (hopefully) should work on all obstacles. Might have to add arrays if an obstacle has more than one body.<div><br></div><div>If this works the way it’s supposed to, there will never be more than 4 obstacles on screen at any one time.</div>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

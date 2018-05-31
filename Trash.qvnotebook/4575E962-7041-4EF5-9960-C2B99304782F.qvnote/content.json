@@ -1,0 +1,27 @@
+{
+  "title": "Actions in libGDX",
+  "cells": [
+    {
+      "type": "text",
+      "data": "One of the things I need to do is animate graphics in the game, such as moving from one point on the screen to another, and rotating graphics in the case of the buttons on the main menu.<div><br></div><div>What I have found that a structure called an \"Actor\" has all of these methods in libGDX. What I don’t know how to do is to get from a image graphic to an actor, so I can call these methods.</div><div><br></div><div><a href=\"https://github.com/libgdx/libgdx/wiki/Scene2d#actions\">https://github.com/libgdx/libgdx/wiki/Scene2d#actions</a><br></div><div><br></div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": "Here is some more code related to using Actions:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private Actor actionManager = new Actor();\nColorAction actionBtG = new ColorAction();\nColorAction actionGtB = new ColorAction();\nSequenceAction sequenceAction;\nRepeatAction repeatAction;\nColor activeColor = new Color(Color.BLUE);\nShapeRenderer shapeRenderer;\n\n\n@Override\npublic void create () {\n\n    shapeRenderer = new ShapeRenderer(); // This just used to create a shape\n    actionBtG.setColor(activeColor);\n    actionBtG.setEndColor(Color.GOLD);\n    actionBtG.setDuration(5);\n\n    actionGtB.setColor(activeColor);\n    actionGtB.setEndColor(Color.BLUE);\n    actionGtB.setDuration(5);\n    sequenceAction = new SequenceAction(actionBtG,actionGtB);\n    repeatAction = new RepeatAction();\n    repeatAction.setAction(sequenceAction);\n    repeatAction.setCount(RepeatAction.FOREVER);\n\n    actionManager.addAction(repeatAction);\n}"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "@Override\n    public void render () {\n    Gdx.gl.glClearColor(1, 1, 1, 1);\n    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);\n    actionManager.act(Gdx.graphics.getDeltaTime());\n\n    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);\n    shapeRenderer.setColor(blue);\n    shapeRenderer.rect(100, 100, 40, 40);\n    shapeRenderer.end();\n}"
+    },
+    {
+      "type": "text",
+      "data": "The above code does not work because he apparently did not attach the code to an Actor (I think). It does give me an idea of the sequence of events to get to where I want to be. Very similar to Spritekit on IOS."
+    }
+  ]
+}

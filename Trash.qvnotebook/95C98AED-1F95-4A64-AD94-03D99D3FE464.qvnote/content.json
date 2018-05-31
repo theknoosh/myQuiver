@@ -1,0 +1,9 @@
+{
+  "title": "Current gravity setting in game",
+  "cells": [
+    {
+      "type": "text",
+      "data": "gravity(0,-700)<div>Think this is standard gravity</div>"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Step 1: Rendering Noise!",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Just found out how to deal with huge noise problem with cycles rendering while using HDR images for lighting. This button must be on!<div><img src=\"quiver-image-url/577D14199DB67910D8C35802EA782140.jpg\" width=\"740\" height=\"629\"><br></div><div><br></div><div>Changes this:</div><div><img src=\"quiver-image-url/54757D1134FDA74E46EE3E442858A00D.png\" alt=\"OfficeRender005.png\" width=\"960\" height=\"540\"><br></div><div><br></div><div>To this:</div><div><img src=\"quiver-image-url/B7EF39369B9D2FC83B6A0C5964909F98.png\" alt=\"OfficeRender006.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

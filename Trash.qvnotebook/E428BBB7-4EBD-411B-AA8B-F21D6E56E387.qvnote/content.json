@@ -1,0 +1,27 @@
+{
+  "title": "Determining screen size",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Found two ways to determine the screen size of an IOS device at runtime:"
+    },
+    {
+      "type": "text",
+      "data": "The first one works in <span style=\"font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">- (</span><span class=\"pl-st\" style=\"box-sizing: border-box; color: rgb(167, 29, 93); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">void</span><span style=\"font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">)</span><span class=\"pl-en\" style=\"box-sizing: border-box; color: rgb(121, 93, 163); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">didLoadFromCCB</span>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "CGSize winSize = [[CCDirector sharedDirector] viewSize];\n\nscreenHeight = winSize.height;\n\nscreenWidth = winSize.width;"
+    },
+    {
+      "type": "text",
+      "data": "The second one does not work in <span style=\"font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">- (</span><span class=\"pl-st\" style=\"box-sizing: border-box; color: rgb(167, 29, 93); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">void</span><span style=\"font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">)</span><span class=\"pl-en\" style=\"box-sizing: border-box; color: rgb(121, 93, 163); font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\">didLoadFromCCB - </span><span class=\"pl-en\" style=\"box-sizing: border-box; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\"><font face=\"Arial\" color=\"#000000\">it will give you 0 in both width and height</font></span><div><span class=\"pl-en\" style=\"box-sizing: border-box; line-height: 16.7999992370605px; white-space: pre; background-color: rgb(255, 255, 255);\"><font face=\"Arial\" color=\"#000000\">Would have to do it in <b>update</b>, which runs 60 times a second</font></span></div>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "screenHeight = self.scene.boundingBox.size.height;\nscreenWidth = self.scene.boundingBox.size.width;"
+    }
+  ]
+}

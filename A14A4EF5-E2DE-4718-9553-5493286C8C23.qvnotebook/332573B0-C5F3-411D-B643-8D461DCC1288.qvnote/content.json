@@ -1,0 +1,215 @@
+{
+  "title": "5. Adding UICollectionViewController",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Have added a totally new file called SwipingController, which is a collectionViewController"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "//\n//  SwipingController.swift\n//  autolayout\n//\n//  Created by Darrell Payne on 10/21/17.\n//  Copyright © 2017 Darrell Payne. All rights reserved.\n//\n\nimport UIKit\n\nclass SwipingController: UICollectionViewController {\n    override func viewDidLoad() {\n        super.viewDidLoad()\n        \n        collectionView?.backgroundColor = .green\n        \n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "To get this controller to show when the project is launched instead of the default viewController, need to modify the <b>appDelegate</b>. This calls our new viewController instead of the default one, and selects the type of layout (a grid)"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {\n        \n        // Build app in code with NO storyboards\n        window = UIWindow()\n        window?.makeKeyAndVisible()\n        \n        let layout = UICollectionViewFlowLayout()\n        let swipingController = SwipingController(collectionViewLayout: layout)\n        \n        window?.rootViewController = swipingController\n        \n        return true\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Back in SwipingController, add the sections and cells for the collectionView:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {\n        return 4\n    }\n    \n    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath)\n        cell.backgroundColor = .red\n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": "If &nbsp;run this will crash. Need to register the cells in viewDidLoad"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "  collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: \"CellID\")"
+    },
+    {
+      "type": "text",
+      "data": "This gives you this:<div><br></div><div><img src=\"quiver-image-url/B0E55A3D1F62116C8362F8759324A682.jpg\" width=\"198\" height=\"427\"><br></div><div><br></div><div>Setup number of items in the section (only one section). Each section has a cell, which I have colored red.</div><div><br></div><div>Now need to change the size of the cells in the layout:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {\n        return CGSize(width: 100, height: 100)\n    }"
+    },
+    {
+      "type": "text",
+      "data": "To use this the class has to be the flowLayoutDelegate:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "class SwipingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {\n..."
+    },
+    {
+      "type": "text",
+      "data": "Made change in collectionView sizeForItemAt to make cells size of screen:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {\n        return CGSize(width: view.frame.width, height: view.frame.height)\n    }"
+    },
+    {
+      "type": "text",
+      "data": "This allows scrolling the screens, but in a vertical direction. Made this change in appDelegate to make it horizontal:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let layout = UICollectionViewFlowLayout()\n// Horizontal scrolling\nlayout.scrollDirection = .horizontal\nlet swipingController = SwipingController(collectionViewLayout: layout)"
+    },
+    {
+      "type": "text",
+      "data": "While it scrolls, we want it to snap each page in place. We enable this like so;"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "collectionView?.backgroundColor = .white\ncollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: \"CellID\")\ncollectionView?.isPagingEnabled = true"
+    },
+    {
+      "type": "text",
+      "data": "Now I want to use a custom cell, instead of the built in one, and I want this custom cell to be full screen. I also want all of the stuff from the original viewController to be in the custom cell (for now).<div>So I created a new file called PageCell.swift. I replaced the initial cell with the new one in SwipingController.</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func viewDidLoad() {\n        super.viewDidLoad()\n        \n        collectionView?.backgroundColor = .white\n        collectionView?.register(PageCell.self, forCellWithReuseIdentifier: \"CellID\")\n        collectionView?.isPagingEnabled = true\n        \n    }"
+    },
+    {
+      "type": "text",
+      "data": "Had to remove the code specifying the cell background in this block:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath)\n//        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green\n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Otherwise it would overwrite my cell."
+    },
+    {
+      "type": "text",
+      "data": "In the custom cell, I copied and pasted code from the original viewController into the custom cell."
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let bearImageView: UIImageView = {\n        let imageView = UIImageView(image:  imageLiteral(resourceName: \"bear_first\"))\n        // This enables autolayout for our imageview\n        imageView.translatesAutoresizingMaskIntoConstraints = false\n        imageView.contentMode = .scaleAspectFit\n        return imageView\n    }()\n    \n    let descriptionTextView: UITextView = {\n        let textView = UITextView()\n        let attributedText = NSMutableAttributedString(string: \"Join us today in our fun and games!\", attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 18)])\n        attributedText.append(NSAttributedString(string: \"\\n\\n\\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.\", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 13),NSAttributedStringKey.foregroundColor:UIColor.gray]))\n        \n        textView.attributedText = attributedText\n        \n        //    textView.text = \"Join us today in our fun and games!\"\n        //    textView.font = UIFont.boldSystemFont(ofSize: 18)\n        textView.textAlignment = .center\n        textView.isEditable = false\n        textView.translatesAutoresizingMaskIntoConstraints = false\n        return textView\n    }()"
+    },
+    {
+      "type": "text",
+      "data": "Here is the bearImage and the description text.<div>Also copied the setUpLayout function as well:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private func setupLayout(){\n        \n        // Create container for imageView\n        let topImageContainerView = UIView()\n        addSubview(topImageContainerView)\n        topImageContainerView.translatesAutoresizingMaskIntoConstraints = false //enable auto layout\n        topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true // Height half the view\n        topImageContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true\n        topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true\n        topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true\n        \n        topImageContainerView.addSubview(bearImageView)\n        \n        \n        // Autolayout methods\n        bearImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true\n        bearImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true\n        bearImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.7).isActive = true\n        \n        // Usually need four constraints\n        addSubview(descriptionTextView)\n        descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true\n        descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant:24).isActive = true\n        descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor,constant:-24).isActive = true\n        descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Making sure to remove \"view\" from in front to the descriptionTextView as in the cell, we are already inside the view.&nbsp;<div>Also had to add the line addSubView(descriptionTextView). Not sure how that worked without it before.</div><div>Anyway we now have this:</div><div><br></div><div><img src=\"quiver-image-url/E3B2C9C67C4C384F636E97C1541A0AE9.gif\" alt=\"screen02.gif\" width=\"405\" height=\"720\"><br></div><div><br></div><div>Swiping behavior is working with graphics from previous viewController, but content is the same on all screens.</div><div><br></div><div>Next we want different images and different text on each screen.</div><div>First, the different images.</div><div>Add an array in SwipingController:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let imageNames = [\"bear_first\",\"heart_second\",\"leaf_third\"] // Array for images"
+    },
+    {
+      "type": "text",
+      "data": "Get the number of cells from the number of items in imageNames"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {\n        return imageNames.count\n}"
+    },
+    {
+      "type": "text",
+      "data": "Next get the name of the image from the array using the indexPath and override the image in cell.bearImage.image"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath) as! PageCell\n        \n        let imageName = imageNames[indexPath.item]\n        cell.bearImageView.image = UIImage(named: imageName)\n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Note that you have to cast the cell as a PageCell as you are using a custom cell.<div>And here we are:</div>"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/081CF6D013A1623EA2F31E7993DAB913.gif\" alt=\"screen03.gif\" width=\"405\" height=\"720\"><div>Now the images are different on each screen. Now for the text:</div><div>Create an array for the header text:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let headerStrings = [\"Join us today in our fun and games\", \"Subscribe and get coupons on our daily events\",\"VIP members special services\"]"
+    },
+    {
+      "type": "text",
+      "data": "This is implemented the same way as the image:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath) as! PageCell\n        \n        let imageName = imageNames[indexPath.item]\n        cell.bearImageView.image = UIImage(named: imageName)\n        \n        // Description header here\n        let descriptionText = headerStrings[indexPath.item]\n        cell.descriptionTextView.text = descriptionText\n        \n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": "There is an issue with these two variables:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let imageNames = [\"bear_first\",\"heart_second\",\"leaf_third\"] // Array for images\nlet headerStrings = [\"Join us today in our fun and games\", \"Subscribe and get coupons on our daily events\",\"VIP members special services\"]"
+    },
+    {
+      "type": "text",
+      "data": "The number of cells needed is derived from imageNames. If headerStrings has less items that imageNames, the app will crash. To avoid that, another method has been created. A new swift file called Page.swift. Inside, a struct is created with the items needed:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "import Foundation\n\nstruct Page {\n    \n  let imageName: String\n  let headerText: String\n}"
+    },
+    {
+      "type": "text",
+      "data": "Then inside SwipingController.swift, the variables are replaced with this:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let pages = [\n  Page(imageName: \"bear_first\", headerText: \"Join us today in our fun and games\"),\n  Page(imageName: \"heart_second\", headerText: \"Subscribe and get coupons on our daily events\"),\n  Page(imageName: \"leaf_third\", headerText: \"VIP members special services\")\n]"
+    },
+    {
+      "type": "text",
+      "data": "This makes sure that each item matches the counts required.<div>The code further down must be modified:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {\n        return pages.count\n}\n\noverride func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath) as! PageCell\n        \n        let imageName = pages[indexPath.item].imageName\n        cell.bearImageView.image = UIImage(named: imageName)\n        \n        let descriptionText = pages[indexPath.item].headerText\n        cell.descriptionTextView.text = descriptionText\n        \n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

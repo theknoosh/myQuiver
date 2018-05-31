@@ -1,0 +1,27 @@
+{
+  "title": "Have succeeded in getting JSON files into XCode and parsed:",
+  "cells": [
+    {
+      "type": "text",
+      "data": "JSON File: (Structure is still under development:"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "data": "{\n    \"Obstacles\": [\n        {\n        \"name\": \"portableBurnerLeft\",\n        \"isAnimated\": \"Yes\",\n        \"subObstacles\": \"Yes\",\n        \"subObstacleName\": \"subOb.json\",\n        \"subXPos\": 0,\n        \"subYPos\": 0\n        }\n    ],\n    \"dataTitle\": \"JSON Obstacles\",\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "Code to parse code (This example done in playgrounds)"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "import Foundation\n\nstruct ObstacleList: Codable {\n    \n    struct Obstacle: Codable {\n        let name: String\n        let isAnimated: String\n        let subObstacles: String\n        let subXPos: Int\n        let subYPos: Int\n    }\n    \n    let dataTitle: String\n    let Obstacles: [Obstacle]\n}\n\n\n\nlet path = Bundle.main.path(forResource: \"obstacle\", ofType: \"json\")\nlet url = URL(fileURLWithPath: path!)\nlet responseData = try? Data(contentsOf: url)\n\nguard let obstacle = try? JSONDecoder().decode(ObstacleList.self, from: responseData!) else {\n    fatalError()\n}\n\nprint(obstacle.Obstacles[0].name)"
+    },
+    {
+      "type": "text",
+      "data": "NOTE:<div>Importing the JSON file into XCode requires an extra step or the code does not see it:</div><div><br></div><div>Select the project, click on Build Phases and add the file in Copy Bundle Resources</div><div><br></div><div><img src=\"quiver-image-url/41239CC2580D63FD5054D634FB6A0503.jpg\" width=\"967\" height=\"496\"><br></div>"
+    }
+  ]
+}

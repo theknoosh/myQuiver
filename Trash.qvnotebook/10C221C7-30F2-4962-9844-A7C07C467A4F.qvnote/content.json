@@ -1,0 +1,10 @@
+{
+  "title": "Workaround for assigning variables to sprites inside ccb files",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "    // Level screen shows at end of each level to show time\n    self.levelScreen = [CCBReader load:@\"levelScreen\"];\n    _scoreLabel = [self.levelScreen.children objectAtIndex:1];\n    _bonusTimeLabel = [self.levelScreen.children objectAtIndex:3];\n    _totalScoreLabel = [self.levelScreen.children objectAtIndex:5];\n"
+    }
+  ]
+}

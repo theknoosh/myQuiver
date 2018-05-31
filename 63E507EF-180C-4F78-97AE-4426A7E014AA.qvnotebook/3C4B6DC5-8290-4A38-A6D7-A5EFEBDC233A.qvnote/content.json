@@ -1,0 +1,36 @@
+{
+  "title": "Using actual data in tableView",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Instead of hard coding the rows to one value, have created an array to use as data:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "    let names = [\"Amy\",\"Bill\",\"Zack\",\"Stephanie\"]"
+    },
+    {
+      "type": "text",
+      "data": "Then change the row count to the number of items in names;"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {\n        return names.count\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Then pulling the data out of the array depending on which row:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {\n            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)\n        // Change from previous here:\n        cell.textLabel?.text = names[indexPath.row]\n        return cell\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Results:<div><img src=\"quiver-image-url/22A455D0D7F1B88C397E2304ED74C343.jpg\" width=\"325\" height=\"564\"><br></div>"
+    }
+  ]
+}

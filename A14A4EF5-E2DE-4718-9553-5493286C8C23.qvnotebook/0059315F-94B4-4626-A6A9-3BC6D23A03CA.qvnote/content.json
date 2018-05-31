@@ -1,0 +1,32 @@
+{
+  "title": "2. Beware safe areas on iPhone X",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Added a button, and have discovered a rather drastic difference between the iPhone X and all other iPhones.&nbsp;<div>The iPhone X screen has rounded corners and a notch on the top middle of the screen.</div><div><br></div><div>Here is the code that does not take into account these safe areas.</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "fileprivate func setupBottomControls(){\n        view.addSubview(previousButton)\n        NSLayoutConstraint.activate([\n            previousButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),\n            previousButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),\n//            previousButton.bottomAnchor.constraint(equalTo: view.bottomAnchor),\n            previousButton.topAnchor.constraint(equalTo: view.topAnchor),\n            previousButton.heightAnchor.constraint(equalToConstant: 50)\n            \n        ])\n    }"
+    },
+    {
+      "type": "text",
+      "data": "On the top:<div><br></div><div><img src=\"quiver-image-url/5184905D15B227EDB3C0A79B2CFFE10B.jpg\" width=\"141\" height=\"305\"><br></div><div><br></div><div>And on the bottom:</div><div><br></div><div><img src=\"quiver-image-url/9BC1E2EB02E3C2BE00C893EE37474C8B.jpg\" width=\"141\" height=\"305\"><br></div><div><br></div><div>Need to use a special function to allow for this space on the top and bottom as so:</div><div><br></div><div>Note the change in the view constraint:&nbsp;view.<b>safeAreaLayoutGuide</b>.leadingAnchor</div><div><br></div><div>This has to be done on the left and right when the phone is rotated.</div><div><br></div><div>Also note the different way the constraints are laid out.</div><div>Instead of:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true\nimageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 100).isActive = true\n\n// You do:\n// Do not need the .isActive = true\nNSLayoutConstraint.activate([\n  imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),\n  imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 100)\n  ])\n\n\n  "
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "fileprivate func setupBottomControls(){\n        view.addSubview(previousButton)\n        NSLayoutConstraint.activate([\n            previousButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),\n            previousButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),\n            previousButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),\n            previousButton.heightAnchor.constraint(equalToConstant: 50)\n            \n        ])\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Here is the resullt for the bottom only, where the buttons will be:<div><br></div><div><img src=\"quiver-image-url/4A17833E732C2D506BF2B4872BF9E98F.jpg\" width=\"141\" height=\"305\"><br></div><div><br></div><div>When the phone is rotated:</div><div><img src=\"quiver-image-url/BE93A70D52851A9FCED0B28614A45BA2.jpg\" width=\"305\" height=\"141\"><br></div>"
+    }
+  ]
+}

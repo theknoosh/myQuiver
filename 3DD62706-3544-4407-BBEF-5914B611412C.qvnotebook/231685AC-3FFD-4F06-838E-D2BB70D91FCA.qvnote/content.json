@@ -1,0 +1,9 @@
+{
+  "title": "Minimum Viable Product",
+  "cells": [
+    {
+      "type": "text",
+      "data": "What is the least amount of functions that are needed to start testing game:<div><ol><li>Multiple levels automatically generated</li><li>Scoring system design and implemented</li><li>Minimum number of obstacles (3 variations of each obstacle)</li><ol><li>Portable burners</li><li>Electric shock</li><li>Saw blade</li><li>Gems</li><li>Coins</li></ol><li>Damage indicator</li><li>Firestorm</li><li>Save and restore game status</li><li>Game Center integration and whatever is used in Android</li><li>In-app purchases</li></ol></div>"
+    }
+  ]
+}

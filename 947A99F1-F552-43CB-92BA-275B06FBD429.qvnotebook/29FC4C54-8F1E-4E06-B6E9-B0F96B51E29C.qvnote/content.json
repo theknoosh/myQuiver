@@ -1,0 +1,10 @@
+{
+  "title": "Usage of FTButtonNode.swift",
+  "cells": [
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let backTexture: SKTexture! = SKTexture(image:\"backBtn.png\")\nlet backTextureSelected: SKTexture! = SKTexture(image:\"backSelBtn.png\")  \nlet backBtn = FTButtonNode(normalTexture: backTexture, selectedTexture: backTextureSelected, disabledTexture: backTexture,size:backTexture.size())\nbackBtn.setButtonAction(self, triggerEvent: .TouchUpInside, action: #selector(GameScene.backBtnTap))\nbackBtn.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame))\nbackBtn.zPosition = 1\nbackBtn.name = \"backBtn\"\nself.addChild(backBtn)\n\nfunc backBtnTap() {\n    print(\"backBtnTap tapped\")\n    // Here for example you can do:\n    let transition = SKTransition.fadeWithDuration(0.5)\n    let nextScene = MenuScene(size: self.scene!.size)\n    nextScene.scaleMode = .ResizeFill\n    self.scene?.view?.presentScene(nextScene, transition: transition)\n}"
+    }
+  ]
+}

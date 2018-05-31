@@ -1,0 +1,9 @@
+{
+  "title": "Rotating backgrounds now working",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div><b>Monday, June 26, 2017 8:50am</b></div>Have managed after considerable trial and error got the rotating backgrounds to<div>work. Finally found I was making the same mistake in swift that I made in Objective-c</div><div><br></div><div>Will go back and improve the look of the background and also make it a bit wider,</div><div>so that I do not have to scale it up when implemented.</div>"
+    }
+  ]
+}

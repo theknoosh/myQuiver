@@ -1,0 +1,9 @@
+{
+  "title": "Added blinking behavior to bot",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Thursday, June 22, 2017 10:34pm</b><div>Have added blinking behavior to steamBot class.</div><div>Random timing for blinks still needs to be implemented</div>"
+    }
+  ]
+}

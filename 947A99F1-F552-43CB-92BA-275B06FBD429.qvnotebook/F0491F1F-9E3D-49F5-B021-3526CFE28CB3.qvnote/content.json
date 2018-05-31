@@ -1,0 +1,9 @@
+{
+  "title": "Problems with obstacles off the top of the screen",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Wednesday, July 5, 2017 7:42pm</b><div>Having problems getting code that will remove objects off top of screen and replace them when they should reappear. Getting too many objects, particularly the water drops that are spawning two, three or more drops instead of one.</div>"
+    }
+  ]
+}

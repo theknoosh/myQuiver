@@ -1,0 +1,31 @@
+{
+  "title": "Package.json and Gruntfile.js",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Here is the package config file that Node.js needs to control the project"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "data": "{\n    \"name\" : \"stephaniefitness\",\n    \"version\" : \"0.0.1\",\n    \"dependencies\" : {\n        \"grunt\": \"~0.4.1\",\n        \"grunt-contrib-watch\" : \"~0.5.3\",\n        \"grunt-contrib-compass\" : \"~0.5.0\",\n        \"grunt-contrib-uglify\" : \"~0.2.2\",\n        \"matchdep\" : \"~0.1.2\"\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "Once you have the json file, run:<div><br></div><div>npm install that installs all the dependencies determined by the json file above.</div>"
+    },
+    {
+      "type": "text",
+      "data": "Grunt.js<div>sudo npm install -g grunt -cli</div><div><br></div><div>This installs grunt (already installed on my machine)</div><div><br></div><div>Now need gruntfile.js:</div>"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "module.exports = function(grunt){\n    // Install the plugins you need\n    grunt.loadNpmTasks('grunt-contrib-uglify');\n    grunt.loadNpmTasks('grunt-contrib-watch');\n    grunt.loadNpmTasks('grunt-contrib-compass');\n\n    grunt.initConfig({\n        uglify: {\n          my_target: {\n              files: {\n                '_/js/script.js': ['_/components/js/*.js']\n              } // files\n          } // my_target \n        }, // uglify\n        compass: {\n            dev: {\n                options: {\n                    config: 'config.rb'\n                } // options\n            } // dev\n        }, // compass\n        watch: {\n            options: {livereload: true},\n            scripts: {\n                files: ['_/components/js/*.js'],\n                tasks: ['uglify']  \n            }, // scripts\n            sass: {\n                files: ['_/components/sass/*.scss'],\n                tasks: ['compass:dev']\n            }, // sass\n            html: {\n                files: ['*.html']\n            } //html\n        } // watch\n    }); // grunt.initConfig\n    grunt.registerTask('default', 'watch');\n} // exports"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

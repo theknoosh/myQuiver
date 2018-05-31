@@ -1,0 +1,27 @@
+{
+  "title": "setTimeout issue with scope",
+  "cells": [
+    {
+      "type": "text",
+      "data": "From what my research says is that setTimeout cannot access the local scope from it’s loction, but uses global scope only. In this case, it has no access to any local variables defined in whatever method that contains it."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "function ComputerMoves() {\n    var table = document.getElementById('tableTwo');\n    for (var r = 0, n = table.rows.length; r < n; r++) {\n        for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {\n            setTimeout(function () {\n                lastCell = table.rows[r].cells[c].innerHTML;\n                table.rows[r].cells[c].innerHTML =\n                        \"<img src = 'Images/water_grey.jpg'>\";\n            }, 100);\n        }\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "Consequently, the code above does not work. Using all global variables does not solve the problem"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "data": "var start = new Date().getTime(),\n    elapsed = '0.0';\n\nwindow.setInterval(function()\n{\n    var time = new Date().getTime() - start;\n\n    elapsed = Math.floor(time / 100) / 10;\n    if(Math.round(elapsed) == elapsed) { elapsed += '.0'; }\n\n    document.title = elapsed;\n\n}, 100);"
+    },
+    {
+      "type": "text",
+      "data": "Found this possibility above. The window.setInerval function will run automatically over the interval you set. (This one appears to run every 10th of a second). 1000 ms = 1 second. Then can use the elapsed variable to see how much time has passed, in which case I can reset the elapsed time back to 0 and start over.<div><br></div><div>Tested the code. This one seems to work.</div>"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Possible code to save inApp purchase once completed",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "- (void)provideContentForProductIdentifier:(NSString *)productIdentifier {\n    \n    if ([productIdentifier isEqualToString:@\"com.razeware.inapprage.randomrageface\"]) {\n        \n        NSInteger currentValue = [[NSUserDefaults standardUserDefaults]\n                            integerForKey:@\"com.sanctuaryofdarkness.inapprage.randomrageface\"];\n        currentValue += 5;\n        [[NSUserDefaults standardUserDefaults] setInteger:currentValue\n                                                   forKey:@\"com.sanctuaryofdarkness.inapprage.randomrageface\"];\n        [[NSUserDefaults standardUserDefaults] synchronize];\n        \n    } else {\n        [_purchasedProductIdentifiers addObject:productIdentifier];\n        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];\n        [[NSUserDefaults standardUserDefaults] synchronize];\n    }\n    \n    [[NSNotificationCenter defaultCenter]\n     postNotificationName:IAPHelperProductPurchasedNotification\n     object:productIdentifier userInfo:nil];\n}\n"
+    }
+  ]
+}

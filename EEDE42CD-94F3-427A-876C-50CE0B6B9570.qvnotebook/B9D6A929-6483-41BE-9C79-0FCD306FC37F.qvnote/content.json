@@ -1,0 +1,10 @@
+{
+  "title": "Search server for files containing string (inside file)",
+  "cells": [
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "grep -lr \"text to find\" *"
+    }
+  ]
+}

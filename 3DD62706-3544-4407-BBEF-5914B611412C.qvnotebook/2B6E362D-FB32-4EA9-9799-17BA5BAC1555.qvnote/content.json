@@ -1,0 +1,9 @@
+{
+  "title": "Android - sawBlade created and added to game",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Have created the sawblade as the first opstacle in the series. Have succeeded in creating the blade and creating the physics body.<div>Placement is correct on screen (left side only, but should be the same on the other side).</div><div><br></div><div>Have not yet added the animation. Will have to change sawBlade class from a Sprite class to a standard node and add sprites as I need the blade to sping and not the sawBlade arm.</div><div><br></div><div>Will work on that next.</div>"
+    }
+  ]
+}

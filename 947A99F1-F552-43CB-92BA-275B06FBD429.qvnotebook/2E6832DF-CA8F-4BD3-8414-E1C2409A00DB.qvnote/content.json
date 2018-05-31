@@ -1,0 +1,9 @@
+{
+  "title": "Randomized blinking behavior",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Friday, June 23, 2017 9:45am</b><div>Randomized bot blinking randomly between 2 and 10 seconds</div><div>Also improved movement of bot back and forth across the screen</div>"
+    }
+  ]
+}

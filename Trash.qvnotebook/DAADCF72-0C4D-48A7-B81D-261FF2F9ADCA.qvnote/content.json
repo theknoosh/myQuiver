@@ -1,0 +1,14 @@
+{
+  "title": "NSCoding protocol - saving data permanently",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<p style=\"color: rgb(0, 0, 0); font-size: 12px; line-height: 16px; white-space: normal; font-family: Menlo;\"><span style=\"font-family: 'Open Sans', sans-serif; font-size: 16px; line-height: 25.8799991607666px; background-color: rgb(255, 255, 255);\">NSCoding is a protcol that you can implement on your data classes to support encoding and decoding your data into a data buffer, which can then be persisted to disk.</span><br></p>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "#define kTitleKey       @\"Title\"\n#define kRatingKey      @\"Rating\"\n\n// This encodes various values (first one is an object(string), the other is a float)\n \n- (void) encodeWithCoder:(NSCoder *)encoder {\n    [encoder encodeObject:_title forKey:kTitleKey];\n    [encoder encodeFloat:_rating forKey:kRatingKey];\n}\n \n // This reverses the process back to what it was before\n \n- (id)initWithCoder:(NSCoder *)decoder {\n    NSString *title = [decoder decodeObjectForKey:kTitleKey];\n    float rating = [decoder decodeFloatForKey:kRatingKey];\n    return [self initWithTitle:title rating:rating];\n}"
+    }
+  ]
+}

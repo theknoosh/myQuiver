@@ -1,0 +1,10 @@
+{
+  "title": "Metal load asset function",
+  "cells": [
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "- (void)loadModel\n{\n    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@\"teapot\" withExtension:@\"obj\"];\n    OBJModel *teapot = [[OBJModel alloc] initWithContentsOfURL:modelURL];\n    \n    OBJGroup *baseGroup = [teapot groupAtIndex:1];\n    if (baseGroup)\n    {\n        self.vertexBuffer = [self.renderer newBufferWithBytes:baseGroup->vertices\n                                                       length:sizeof(Vertex) * baseGroup->vertexCount];\n        self.indexBuffer = [self.renderer newBufferWithBytes:baseGroup->indices\n                                                      length:sizeof(IndexType) * baseGroup->indexCount];\n    }\n}\n"
+    }
+  ]
+}

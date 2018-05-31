@@ -1,0 +1,9 @@
+{
+  "title": "Starting project in Godot",
+  "cells": [
+    {
+      "type": "text",
+      "data": "CMD-A to create a new Node<div>Added KinematicBody2D to Scene - renamed it Character, which will be the file name when saved</div><div>Added CollisionShape2D to that, and in the inspector select shape and add New RectangleShape2D</div><div><br></div><div>Shift-F will zoom to whatever is selected.</div><div><br></div>"
+    }
+  ]
+}

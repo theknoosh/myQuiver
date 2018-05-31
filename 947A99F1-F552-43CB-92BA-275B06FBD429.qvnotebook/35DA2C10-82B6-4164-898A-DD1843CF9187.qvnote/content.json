@@ -1,0 +1,9 @@
+{
+  "title": "SKNode used in steamBot class",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Tuesday, June 20th, 2017 9:00am</b><div>Have succesfully used SKNode for steamBot class and added bot graphics as SKSpriteNode in pieces</div><div>so that they can be manipulated and animated separately</div>"
+    }
+  ]
+}

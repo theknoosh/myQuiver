@@ -1,0 +1,9 @@
+{
+  "title": "Added particle effects and control panel",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Sunday, June 25, 2017 9:30am<div>Last night and this morning have made a lot of progress. Added fire to the initial burner using particle effects. Also add a physics spring field that causes the bot to bounce when on the burner.</div><div><br></div><div>Have added behavior to close the gate, and turn off the burner when the bot leaves the gate.</div>"
+    }
+  ]
+}

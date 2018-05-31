@@ -1,0 +1,9 @@
+{
+  "title": "BUG: Troubleshooting Bot on burners",
+  "cells": [
+    {
+      "type": "text",
+      "data": "First off, I have discovered that &nbsp;I have way too many obstacles in the obstacles array.&nbsp;<div>Should have no more that 4 at any one time. Debug shows I have 12 at the moment.</div><div>2nd. It is showing the bot way too far away from all of them. Need a way to narrow down</div><div>the range to one then determining if the bot is on the burner of that one.</div><div><br></div><div>Think I will narrow it down by checking only the y position at first to see if the bot is in range.</div><div>Need to track the height of any given obstacle first.</div>"
+    }
+  ]
+}

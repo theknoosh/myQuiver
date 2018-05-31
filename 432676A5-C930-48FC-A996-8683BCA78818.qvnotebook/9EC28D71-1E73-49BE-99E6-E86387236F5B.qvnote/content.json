@@ -1,0 +1,9 @@
+{
+  "title": "Unity Concepts",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Prefab - create an object once and make many instances of it in the scene. Changing one instance, changes all instances. Blue text in the hierchacy shows that an instance is connected to the prefab and it is working correctly. Red denotes that a link to a prefab has been broken."
+    }
+  ]
+}

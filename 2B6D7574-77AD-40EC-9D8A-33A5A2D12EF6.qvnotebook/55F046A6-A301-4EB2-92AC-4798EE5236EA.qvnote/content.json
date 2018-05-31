@@ -1,0 +1,27 @@
+{
+  "title": "NSUserDefaults",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Set a user default"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "[[NSUserDefaults standardUserDefaults] setInteger:howManyBots\n                                                   forKey:@\"com.sanctuaryofdarkness.MechBot.MoreBots\"];\n        [[NSUserDefaults standardUserDefaults] synchronize];"
+    },
+    {
+      "type": "text",
+      "data": "Retrieve a user default"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "int currentValue = [[NSUserDefaults standardUserDefaults] \n        integerForKey:@\"com.sanctuaryofdarkness.MechBot.MoreBots\"];"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

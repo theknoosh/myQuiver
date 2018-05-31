@@ -1,0 +1,32 @@
+{
+  "title": "Following steamBot with camera",
+  "cells": [
+    {
+      "type": "text",
+      "data": "When the bot moves, it is necessary for the camera to follow it when it is midway up the screen or above. To do this, first create a camera:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private OrthographicCamera mainCamera;\nprivate Viewport gameViewPort;\n\n   public GamePlay(GameMain game){\n   \n    // Set camera to size of the screen -- this changes with the device\n    mainCamera = new OrthographicCamera(GameInfo.WIDTH,GameInfo.HEIGHT);\n    // Set camera position to center of the screen (note z access is 0)\n    mainCamera.position.set(GameInfo.WIDTH / 2f,GameInfo.HEIGHT / 2, 0);\n    // Not sure what gameViewPort does yet\n    gameViewPort = new StretchViewport(GameInfo.WIDTH,GameInfo.HEIGHT);\n\n   }"
+    },
+    {
+      "type": "text",
+      "data": "Then need to set render function to use this camera:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "@Override\npublic void render(float delta) {\n  \n  game.getBatch().setProjectionMatrix(mainCamera.combined);\n  mainCamera.update();\n  \n  update(); // Internal function that runs each loop through the render method\n}"
+    },
+    {
+      "type": "text",
+      "data": "The bot moves when the player touches the screen. We need to update the camera each time through the render loop:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void update(){\n  \n   float yPosition = steamBot.getPosition(); // Get the bots current pos from steamBot class\n   \n    // If the bot is above center, set the camera to the y position of the bot\n    // The x position does not change\n    if (yPosition > GameInfo.HEIGHT / 2.0f){\n      mainCamera.position.set(mainCamera.position.x, yPosition, 0);\n    }\n}"
+    }
+  ]
+}

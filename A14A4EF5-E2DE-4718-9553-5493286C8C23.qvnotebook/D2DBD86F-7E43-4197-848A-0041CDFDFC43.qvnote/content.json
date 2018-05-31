@@ -1,0 +1,63 @@
+{
+  "title": "3. Layout of bottom controls using a stackView",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Want to arrange the controls on the bottom using a stackView. You create a stackView, add your controls to the stackView and constrain the stackView where you want it.<div><br></div><div>For a test, I’m creating two UIViews of different colors just so I can see the layout:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "   fileprivate func setupBottomControls(){\n//        view.addSubview(previousButton)\n        \n        let yellowView = UIView()\n        yellowView.backgroundColor = .yellow\n        let blueView = UIView()\n        blueView.backgroundColor = .blue\n        \n        // Create stackView and add controls\n        let bottomControlsStackView = UIStackView(arrangedSubviews: [yellowView,blueView])\n        bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false\n        \n        // Give each control equal space\n        bottomControlsStackView.distribution = .fillEqually\n        \n        view.addSubview(bottomControlsStackView)\n        \n        NSLayoutConstraint.activate([\n            bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),\n            bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),\n            bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),\n            bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)\n            \n        ])\n    }"
+    },
+    {
+      "type": "text",
+      "data": "This gives us this:<div><br></div><div><img src=\"quiver-image-url/D08E33A679159A9DD9D68716DB848404.jpg\" width=\"199\" height=\"427\"><br><div><br></div><div>And this:</div><div><br></div><div><img src=\"quiver-image-url/04DF4E201F4EC14A6DE03CDF394323E4.jpg\" width=\"418\" height=\"211\"><br></div></div><div><br></div><div>Can also stack them vertically by adding this:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "bottomControlsStackView.axis = .vertical"
+    },
+    {
+      "type": "text",
+      "data": "<img src=\"quiver-image-url/42FD08498696A2552DF1AD1879111F8A.jpg\" width=\"207\" height=\"428\"><div><br></div><div>Now we are going to replace the placeholders with actual buttons (still have placeholder in the middle).</div><div>Creating two buttons and adding them to the stackView:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "private let previousButton: UIButton = {\n    let button = UIButton(type: .system)\n    button.setTitle(\"PREV\", for: .normal)\n    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)\n    button.setTitleColor(.gray, for: .normal)\n    button.translatesAutoresizingMaskIntoConstraints = false\n    return button\n}()\n\nprivate let nextButton: UIButton = {\n    let button = UIButton(type: .system)\n    button.setTitle(\"NEXT\", for: .normal)\n    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)\n    button.setTitleColor(.gray, for: .normal)\n    button.translatesAutoresizingMaskIntoConstraints = false\n    return button\n}()"
+    },
+    {
+      "type": "text",
+      "data": "Note: fileprivate vs private???"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "  fileprivate func setupBottomControls(){\n//        view.addSubview(previousButton)\n      \n      let middleView = UIView()\n      middleView.backgroundColor = .green\n      \n      let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton,middleView,nextButton])\n      bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false\n      bottomControlsStackView.distribution = .fillEqually\n      view.addSubview(bottomControlsStackView)\n      \n      NSLayoutConstraint.activate([\n          bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),\n          bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),\n          bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),\n          bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)\n          \n      ])\n  }"
+    },
+    {
+      "type": "text",
+      "data": "Removed the middle placeholder with a UIPageControl:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let pageControl: UIPageControl = {\n   let pc = UIPageControl()\n    pc.currentPage = 0\n    pc.numberOfPages = 4\n    pc.currentPageIndicatorTintColor = .red\n    pc.pageIndicatorTintColor = .gray\n    return pc\n}()"
+    },
+    {
+      "type": "text",
+      "data": "And replaced the placeholder in the stack:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton,pageControl,nextButton])"
+    },
+    {
+      "type": "text",
+      "data": "And this is the result:<div><img src=\"quiver-image-url/2DED22BFBFC9A9B923DBD1951986270D.jpg\" width=\"198\" height=\"417\"><br></div><div>Excellent!</div><div><br></div>"
+    }
+  ]
+}

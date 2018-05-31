@@ -1,0 +1,99 @@
+{
+  "title": "Water/Steam Vial",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Struggling to get this to work. Need to use different camera, as these vials are part of the HUD, and should NOT move when the steamBot, obstacles, backgrounds, etc. are moving.&nbsp;<div><br></div><div>This requires a different camera. The only way I can find (so far) to do this is to use a Stage variable. Only Actors can be added to the Stage.</div><div><br></div><div>Have three classes to handle this at the moment:</div><div><b>WaterVial.java</b> - this is the definition of the vial itself - right now only dealing with the actual vial sprite. Eventually need the vial animation such as the bubbles and the wave animation.</div><div><br></div><div>Below is a bare bones WaterVial class:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public class WaterVial extends Actor{\n\n    private Sprite waterVial;\n    private TextureAtlas waterAtlas;\n    private TextureAtlas waveAtlas;\n    private Animation<TextureRegion> waterAnimation;\n    private Animation<TextureRegion> waveAnimation;\n    private Array<TextureAtlas.AtlasRegion> waterFrames;\n    private Array<TextureAtlas.AtlasRegion> waveFrames;\n\n    private float elapsedTimeWater;\n\n    public WaterVial(){\n\n        waterVial = new Sprite(new Texture(\"UI/leftVial.png\"));\n\n        // waterAtlas = new TextureAtlas(\"SteamBot Animation/Bubbles Animation.atlas\");\n        // waterFrames = waterAtlas.getRegions();\n        // waterAnimation = new Animation<TextureRegion>(1f / 10f, waterFrames);\n    }\n\n    @Override\n    public void draw(Batch batch, float parentAlpha) {\n        super.draw(batch, parentAlpha);\n        \n        batch.draw(waterVial,waterVial.getX(),waterVial.getY()); // This should draw the vial on the screen\n    }\n\n    private void createVial(){\n        waterVial.setPosition(0,0);\n\n    }\n\n} // WaterVial"
+    },
+    {
+      "type": "text",
+      "data": "<b>UIHud.java</b> - This handles the entire HUD display for the game. There will be many components here, but right now all we are doing is the WaterVial.<div><br></div><div>Here we create a WaterVial iVar, and add it to the stage. We position it on the screen here and somehow draw it to the screen:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "// Heads up display for main gameplay scene\npublic class UIHud {\n\n    private GameMain game;\n    private Stage stage;\n    private Viewport gameViewport;\n\n    // The one and only graphic we are trying to add to the HUD\n    private WaterVial waterVial;\n\n    public UIHud(GameMain game){\n        this.game = game;\n\n        gameViewport = new FitViewport(GameInfo.WIDTH, GameInfo.HEIGHT, new OrthographicCamera());\n\n        stage = new Stage(gameViewport, game.getBatch());\n        Gdx.input.setInputProcessor(stage);\n\n        waterVial = new WaterVial();\n\n        stage.addActor(waterVial);\n\n    }\n\n\n} // UIHud"
+    },
+    {
+      "type": "text",
+      "data": "Finally we have GamePlay.java. This is the central point where the game is run.<div><br></div><div>We create a UIHud iVar which contains the WaterVial iVar. This is place in the game loop which then tells UIHud to draw it’s components on the screen. Looks like UIHud asks it components (waterVial only at the moment) to draw itself on the screen.</div><div><br></div><div>Partial code only:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public class GamePlay implements Screen, ContactListener {\n  private UIHud hud;\n  \n  public GamePlay(GameMain game){ // Constructor\n        this.game = game;\n        \n         hud = new UIHud(game); // Create hud, pass the game variable from GameMain\n  }\n  \n    @Override\n    public void render(float delta) {\n      \n      Gdx.gl.glClearColor(0, 0, 0, 1);\n      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);\n      \n      game.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);\n      hud.getStage().draw();\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "IT WORKED! Did notice that the draw to the main camera must come after the draw to the stage camera, other wise chaos ensues."
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "// Stationery camera that does not move\n\ngame.getBatch().setProjectionMatrix(hud.getStage().getCamera().combined);\nhud.getStage().draw();\n\n// Main camera that follows the Bot\n// This must come after the stationery camera for some reason\ngame.getBatch().setProjectionMatrix(mainCamera.combined);\nmainCamera.update();"
+    },
+    {
+      "type": "text",
+      "data": "Replicated the same code for the steamVial with the exception of the positioning:<div>Need to place it on the right side of the screen, so took the screen width and subtracted the vial’s width and added a few pixels to get it to the correct position</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void createVial(){\n    steamVial.setPosition(GameInfo.WIDTH - steamVial.getWidth() + 25.0f, GameInfo.HEIGHT - steamVial.getHeight());\n\n}"
+    },
+    {
+      "type": "text",
+      "data": "On the Water Vial, how I show that the water is lowering, I lay a black shape with a wave animation on it over top of the water animation. I scale the wave animation to simulate the water level growing and shrinking. I 0 scale is for full water available. A scale of 1 shows no water available.<div><br></div><div>This works well on IOS, but in libGDX, you cannot scale an animation. So I needed to extract the graphics from each frame of animation, convert it to a Sprite, and then draw each individual frame to the screen. The code to do that is below:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "TextureRegion region = waveAnimation.getKeyFrame(elapsedTimeWave, true);\nSprite sprite = new Sprite();\nsprite.setRegion(region);\n\nbatch.draw(sprite, waterVial.getX() + 75.0f, waterVial.getY() + 200.0f);"
+    },
+    {
+      "type": "text",
+      "data": "The above seems to be useless as it does draw the sprites on the screen, it ignores scaling information, which is why I did this in the first place. I have managed to do this elsewhere in the game, so will have to revisit this.<div><br></div><div>FINALLY got this to kind of work with the following code:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "TextureRegion region = waveAnimation.getKeyFrame(elapsedTimeWave, true);\nSprite sprite = new Sprite(region.getTexture());\nsprite.setRegion(region);\n\n// Have to set position on sprite directly with very odd numbers\nsprite.setPosition(waterVial.getX() - 120.0f, waterVial.getY() - 650.0f);\n// setOrigin works as expected and scales sprite from top center\nsprite.setOrigin(sprite.getWidth() / 2.0f, sprite.getHeight());\n\n// Have to set scale WAY down or graphic is enormous\nsprite.setScale(0.25f, 0.5f);\n\n// Have to use sprite.draw instead of batch.draw\nsprite.draw(batch);"
+    },
+    {
+      "type": "text",
+      "data": "Figured that scale should go from 0 - 0.25 (full water to no water).<div>This makes no sense, but it works.</div><div><br></div><div>On SteamVial similar situation except there is a pressBar instead of a Wave and no animation:</div><div>No weirdness with the scaling this time, just scale of 1 for the x and whatever I need between 0 - 1 for they y.</div><div><br></div><div><img src=\"quiver-image-url/391CFC16A5CBA1E8A35C81EFF418605C.png\" alt=\"pressBar.png\" width=\"120\" height=\"289\">PressBar image<br></div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private Sprite pressBar;\n\npublic SteamVial(){\n  \n    pressBar = new Sprite(new Texture(\"UI/pressBar.png\"));\n  \n}\n\n@Override\n    public void draw(Batch batch, float parentAlpha) {\n        super.draw(batch, parentAlpha);\n\n        elapsedTimeSteam += Gdx.graphics.getDeltaTime();\n        \n        pressBar.setOrigin(pressBar.getWidth() / 2.0f, pressBar.getHeight());\n        pressBar.setScale(1f, 0.5f);\n        pressBar.setPosition(GameInfo.WIDTH - steamVial.getWidth() + 60.0f, steamVial.getY() + 110.0f);\n\n        batch.draw(steamAnimation.getKeyFrame(elapsedTimeSteam,true), GameInfo.WIDTH - steamVial.getWidth() + 60.0f,\n                steamVial.getY() + 125.0f);\n\n        pressBar.draw(batch);\n\n        batch.draw(steamVial,steamVial.getX(),steamVial.getY()); // This should draw the vial on the screen\n\n    }\n"
+    },
+    {
+      "type": "text",
+      "data": "Next to add the press:<div><img src=\"quiver-image-url/3CEE17EBBF36DC10FB3274F72EE1718E.png\" alt=\"press.png\" width=\"120\" height=\"22\"><br></div><div><br></div><div>The press goes below the pressBar and has to move along with the pressBar.</div><div>I have accomplished this by using the Scale of the pressBar * the height of the pressBar and adding this to the y position of the press. Needed to subtract the scale from 1 as without it the press was moving in the wrong direction:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private float pressBarLevel;\npublic SteamVial(){\n\n    pressBarLevel = 0.3f; // This will need to be controlled elsewhere eventually\n\n}\n\n@Override\n    public void draw(Batch batch, float parentAlpha) {\n        super.draw(batch, parentAlpha);\n\n        elapsedTimeSteam += Gdx.graphics.getDeltaTime();\n\n        pressBar.setOrigin(pressBar.getWidth() / 2.0f, pressBar.getHeight());\n        pressBar.setScale(1f, pressBarLevel);\n        pressBar.setPosition(GameInfo.WIDTH - steamVial.getWidth() + 60.0f, steamVial.getY() + 110.0f);\n        \n        // The press position is directly related to the pressBar position\n        // and the pressBar scale\n        press.setPosition(pressBar.getX(),pressBar.getY() + (pressBar.getHeight() * (1 - pressBarLevel)));\n\n        batch.draw(steamAnimation.getKeyFrame(elapsedTimeSteam,true), GameInfo.WIDTH - steamVial.getWidth() + 60.0f,\n                steamVial.getY() + 125.0f);\n\n        pressBar.draw(batch);\n        press.draw(batch);\n\n        batch.draw(steamVial,steamVial.getX(),steamVial.getY()); // This should draw the vial on the screen\n\n    }\n"
+    },
+    {
+      "type": "text",
+      "data": "Building up steam while reducing water:<div>Am using a Singleton on the main game settings using GameManager. These are saved in iCloud. Only setting in GameManager are saved:</div><div><br></div>"
+    },
+    {
+      "type": "text",
+      "data": "GameManager.java as it is currently setup:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "package helpers;\n\nimport com.badlogic.gdx.math.Vector2;\n\n/**\n * Created by Darrell Payne on 8/20/17.\n */\n\npublic class GameManager {\n    private static final GameManager ourInstance = new GameManager();\n\n    public int score = 0; // Default to 0\n    public int level = 1; // Default to level 1\n    public float topMost = 300;\n    public float waterLevel = 0f; // Default to full water\n    public float steamLevel = 0.5f; // Default to half steam\n    public Vector2 steamBotPos;\n    public boolean restoreGameAvailable;\n\n    private GameManager() {\n\n    }\n\n    public static GameManager getInstance() {\n        return ourInstance;\n    }\n\n} // Game Manager Singleton"
+    }
+  ]
+}

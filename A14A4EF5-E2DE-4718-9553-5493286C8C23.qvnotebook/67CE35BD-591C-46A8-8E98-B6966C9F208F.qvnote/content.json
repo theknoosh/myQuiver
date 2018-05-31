@@ -1,0 +1,36 @@
+{
+  "title": "4. Adding an extension",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Have added an extension to UIColor:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "extension UIColor {\n    static var mainPink = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)\n}"
+    },
+    {
+      "type": "text",
+      "data": "This enables me to do this:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "    button.setTitleColor(.mainPink , for: .normal)"
+    },
+    {
+      "type": "text",
+      "data": "And this:"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "    pc.currentPageIndicatorTintColor = .mainPink"
+    },
+    {
+      "type": "text",
+      "data": "The extension simply added a color to UIColor that wasn’t there before.<div>Just makes thinks a little simpler</div>"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Keyboard shortcuts",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>Comment block of code</div>Shift Option A<div><br></div><div>Comment line of code</div><div>Command /</div><div><br></div><div>Bring up command pallet</div><div>Shift Command P</div>"
+    }
+  ]
+}

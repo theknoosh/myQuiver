@@ -1,0 +1,41 @@
+{
+  "title": "Rotating backgrounds",
+  "cells": [
+    {
+      "type": "text",
+      "data": "As the bot moves up the screen, we need to keep the backgrounds on screen as it goes up and as it goes down. This is down by creating an array of background objects. The theory hear is when the bot goes up, one of the backgrounds screen will no longer be visible. When that happens, move the background image, now below the screen to <b>above the background</b> that is on the screen. When the bot is going down, the opposite happens. When the bot goes down, the background will go above the screen and no longer be visible. In this case the background image is moved to<b> below the background</b> currently visible.<div><br></div><div>First, create an array of background sprites:</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private Sprite[] bgs; // Array of backgrounds"
+    },
+    {
+      "type": "text",
+      "data": "Initialize and populate with background sprites:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "public GamePlay(GameMain game){ // Gameplay constructor\n  \n  createBackgrounds();\n}\n\n// Two backgrounds stacked on top of each other in this case\nprivate void createBackgrounds(){\n        bgs = new Sprite[2]; // 2 entries will be in array\n        for (int i = 0; i < bgs.length; i++){\n            bgs[i] = new Sprite(new Texture(\"GamePlay/GameBackground.png\"));\n            bgs[i].setPosition(0, (i * bgs[i].getHeight()));\n            lastYPosition = Math.abs(bgs[i].getY());\n        }\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Create function to check for background being out of bounds:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void checkBackgroundsOutOfBounds() {\n    for (int i = 0; i < bgs.length; i++){\n      \n        // Background goes off the top of the screen\n        if ((bgs[i].getY() - bgs[i].getHeight() / 2f - 5) > mainCamera.position.y){\n            float newPosition = bgs[i].getHeight() + lastYPosition;\n            bgs[i].setPosition(0,-newPosition);\n            lastYPosition = Math.abs(newPosition);\n        }\n    }\n}"
+    },
+    {
+      "type": "text",
+      "data": "This does not work too well. It immediately moves the top background to the bottom when game starts. Not the behavior I want. Going to look at the IOS version to see if I can do it the same way in Java.<div><br></div><div>This version works:</div><div>If the Bot is going up, the backgrounds are going down. When the <b>lower</b> background is off the bottom of the screen, make it the background on top by moving it up twice the height of the background.</div><div><br></div><div>If the Bot is going down, the backgrounds are going up. When the <b>upper</b> background is off the top of the screen, move it DOWN twice the height of the background.</div>"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "private void checkBackgroundsOutOfBounds() {\n\n    // bgs 0 is on top\n    if (bgs[0].getY() > bgs[1].getY()) {\n\n        // Bot moving up, background moving off bottom of screen\n        // Check the position of the LOWER background\n        if ((bgs[1].getY() + bgs[1].getHeight() + (GameInfo.HEIGHT / 2)) < mainCamera.position.y) { // bgs[0] off the top of the screen\n\n            float newPosition = bgs[1].getY() + (bgs[1].getHeight() * 2);\n            bgs[1].setPosition(0, newPosition);\n\n        // Bot moving down, background going off top of screen\n        // Check the position of the HIGHER background\n        } else if (bgs[0].getY() - (GameInfo.HEIGHT / 2) > mainCamera.position.y){\n\n            float newPosition = bgs[0].getY() - (bgs[0].getHeight() * 2);\n            bgs[0].setPosition(0,newPosition);\n        }\n    }"
+    }
+  ]
+}

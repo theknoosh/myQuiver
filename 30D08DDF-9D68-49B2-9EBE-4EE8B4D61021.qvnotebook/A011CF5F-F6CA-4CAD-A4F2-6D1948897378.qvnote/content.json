@@ -1,0 +1,14 @@
+{
+  "title": "Bot Settings for Bounce",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Wanted to add a little bounce to the Bot when he collided with other objects. Right now, when he landed on something, he would just stop cold. Found the answer in the FixtureDef.restitution. I set it to 5 and the ball flew completely off the screen. Set it to 1 and it bounced forever. Correct number seems to be 0.35f:"
+    },
+    {
+      "type": "code",
+      "language": "java",
+      "data": "FixtureDef fixtureDef = new FixtureDef();\nfixtureDef.density = 4.0f;\nfixtureDef.friction = 0.25f;\n\n// Bounce setting here\nfixtureDef.restitution = 0.35f;"
+    }
+  ]
+}

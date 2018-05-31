@@ -1,0 +1,9 @@
+{
+  "title": "SteamBot/MechBot observations",
+  "cells": [
+    {
+      "type": "text",
+      "data": "June 24th, 2016<div>Have just completed new background structure for game working similar to foreground obstacles, except there is not interation between player and background objects (only for interest and decoration).</div><div><br></div><div>One major change is that at end of level, instead of trying to synchronize the position of the last background object and the gate. I determine gate closest to end of level and move the gate a certain distance from the last background object. May need to change the way the foreground obstacles are drawn due to this in the future.</div>"
+    }
+  ]
+}

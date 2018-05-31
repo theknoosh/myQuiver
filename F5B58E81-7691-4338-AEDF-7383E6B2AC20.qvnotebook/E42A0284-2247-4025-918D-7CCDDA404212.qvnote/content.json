@@ -1,0 +1,9 @@
+{
+  "title": "Step 3: Adding windows",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Using the Windows plug in, add a window to the scene<div><br></div><div><img src=\"quiver-image-url/D2EC4CC9C053734066DE0399CE8DFB51.jpg\" width=\"434\" height=\"410\"></div><div><br></div><div>The materials for the window are set, but not correctly for this purpose. Selecting the glass material, I have setup the following settings:</div><div><br></div><div><div><img src=\"quiver-image-url/12687E900325D1884193C99F3CE8C69F.jpg\" width=\"903\" height=\"508\"><br></div></div><div><br></div><div>Here is the result:</div><div><img src=\"quiver-image-url/EEBEC4A3A662D508CB3892EFD6FAE239.png\" alt=\"OfficeRender011.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

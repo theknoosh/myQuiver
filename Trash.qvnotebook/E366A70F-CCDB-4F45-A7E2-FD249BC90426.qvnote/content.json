@@ -1,0 +1,25 @@
+{
+  "title": "Issues with user testing",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Have begun showing game informally to users and have discovered some interesting problems."
+    },
+    {
+      "type": "text",
+      "data": "1. Users do not wait to read the instructions. They immediately touch the screen and lose as they do not wait for the steam to build up."
+    },
+    {
+      "type": "text",
+      "data": "2. I see different types of activity with users who do not know how to play the game. Some pick it up immediately. Some try using two fingers. Some try swiping across the screen."
+    },
+    {
+      "type": "text",
+      "data": "<font color=\"#cf3749\"><b>Might decide to delete opening instructions, as no one is reading them!</b></font>"
+    },
+    {
+      "type": "text",
+      "data": ""
+    }
+  ]
+}

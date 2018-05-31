@@ -1,0 +1,9 @@
+{
+  "title": "Setup collision between water drops and steamBot",
+  "cells": [
+    {
+      "type": "text",
+      "data": "I have succeeded in getting water drops to appear on screen at random x positions, but am having problems arranging the collision and the adding of water to the water vial."
+    }
+  ]
+}

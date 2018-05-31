@@ -1,0 +1,9 @@
+{
+  "title": "Step 4: Adding vertical blinds",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Vertical blinds are just a plane that is giving depth with solidfy modifier and multiplied across the window with the Array Modifier.<div>Settings are:</div><div><br></div><div><img src=\"quiver-image-url/BBE12222229B3C0578E6B4C5B4DDA8FE.png\" alt=\"OfficeRender012.png\" width=\"960\" height=\"540\"><br></div><div><br></div><div>Materials setting to make the blinds translucent:</div><div>Also added cap to blinds with slightly warm color.</div><div>Disconnected Transparent node as it made the blinds too bright, but still had to leave the Mix Shader for some reason.</div><div><img src=\"quiver-image-url/72B83F4872B94C3C978B8F8F4C4E8116.jpg\" width=\"783\" height=\"378\"><br></div><div><br></div><div>New render:</div><div><img src=\"quiver-image-url/8E165D7C1E8414210A2563E21E24D153.png\" alt=\"OfficeRender013.png\" width=\"960\" height=\"540\"><br></div><div><br></div><div>Moved the blinds down a little so that you can see the connectors:</div><div><img src=\"quiver-image-url/45ABCBA07576F6AE4A33080265683CA9.png\" alt=\"OfficeRender014.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

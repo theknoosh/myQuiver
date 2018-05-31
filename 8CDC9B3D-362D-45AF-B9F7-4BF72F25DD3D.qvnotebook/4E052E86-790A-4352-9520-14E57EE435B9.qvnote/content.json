@@ -1,0 +1,10 @@
+{
+  "title": "Bootstrap snippet to embedd carousel into modal popup",
+  "cells": [
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "<div class=\"container text-center\">\n\n<h1> Click Me </h1>\n<!-- Large modal -->\n<button class=\"btn btn-default\" data-toggle=\"modal\" data-target=\".bs-example-modal-lg\">Large modal</button>\n\n<div class=\"modal fade bs-example-modal-lg\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-lg\">\n    <div class=\"modal-content\">\n      <div id=\"carousel-example-generic\" class=\"carousel slide\" data-ride=\"carousel\">\n\n  \n\n  <!-- Wrapper for slides -->\n  <div class=\"carousel-inner\">\n    <div class=\"item active\">\n     <img class=\"img-responsive\" src=\"http://placehold.it/1200x600/555/000&text=One\" alt=\"...\">\n      <div class=\"carousel-caption\">\n        One Image\n      </div>\n    </div>\n    <div class=\"item\">\n      <img class=\"img-responsive\" src=\"http://placehold.it/1200x600/fffccc/000&text=Two\" alt=\"...\">\n      <div class=\"carousel-caption\">\n        Another Image\n      </div>\n    </div>\n     <div class=\"item\">\n      <img class=\"img-responsive\" src=\"http://placehold.it/1200x600/fcf00c/000&text=Three\" alt=\"...\">\n      <div class=\"carousel-caption\">\n        Another Image\n      </div>\n    </div>\n  </div>\n\n  <!-- Controls -->\n  <a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">\n    <span class=\"glyphicon glyphicon-chevron-left\"></span>\n  </a>\n  <a class=\"right carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"next\">\n    <span class=\"glyphicon glyphicon-chevron-right\"></span>\n  </a>\n</div>\n    </div>\n  </div>\n</div>\n</div>\n"
+    }
+  ]
+}

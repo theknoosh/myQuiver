@@ -1,0 +1,9 @@
+{
+  "title": "Step 6: Adding wallpaper to back wall",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Create two textures, one for all walls called White Walls and a second one for the back wall, called Wall Paper.<div>Apply scale and rotations with Control-A (while in object mode). Then in Edit mode, UV Unwrap the walls. Scale the walls up to the height of the box.</div><div><br></div><div><img src=\"quiver-image-url/9C1CF845EE0DC17D5648C6DC4F70ECB3.jpg\" width=\"305\" height=\"243\"><br></div><div><br></div><div><img src=\"quiver-image-url/BE6FC587800C4B3E04C91CC508355C9C.jpg\" width=\"581\" height=\"407\"><br></div><div><br></div><div>Load the image texture:</div><div><img src=\"quiver-image-url/AEEF65B07C53D929BB81D47B993D91FA.png\" alt=\"union_jack.png\" width=\"574\" height=\"574\"><br></div><div><br></div><div>Scale the texture down using Texture Coordinate node and Mapping node. Connect UV from Texture Coordinate node to Vector in Mapping node. Set x,y,z scale to 8. (Oddly, higher numbers produce smaller textures). Add Color Ramp node between Image Texture and Diffuse DSDF node. This allows you to change the color of the black and white texture. Left side of ramp controls black part of image, while right side controls background of texture.</div><div><br></div><div><img src=\"quiver-image-url/65AE9D83CB96DFE34327E8F56E4983C3.jpg\" width=\"1531\" height=\"450\"><br></div><div><br></div><div>Render with wall paper in place:</div><div><br></div><div><img src=\"quiver-image-url/A400F406882E6676C4D2C6BEF78AA6BA.png\" alt=\"render016.png\" width=\"960\" height=\"540\"><br></div>"
+    }
+  ]
+}

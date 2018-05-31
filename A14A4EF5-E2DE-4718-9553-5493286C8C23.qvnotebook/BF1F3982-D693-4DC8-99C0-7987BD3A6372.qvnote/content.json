@@ -1,0 +1,41 @@
+{
+  "title": "6. MVC (Model View Controller)",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Need to separate the project into three files, one for the model, one for the view and one for the controller.<div><br></div><div>Model: Page.swift</div><div>View: PageCell.swift responsible for presenting the data that goes on the screen</div><div>Controller: SwipingController.swift - coordinates the models and views, basically deciding what model goes to what view</div><div><br></div><div>Not sure about any of this, but this as I understand it at the moment.</div><div><br></div><div>Page.swift is nothing but a struct holding the image and the header text.</div><div><br></div><div>Now going to pull the view code out of the controller and put it in PageCell.swift</div><div><br></div><div>Additions to PageCell.swift</div><div>Page property created from Page.swift. Properties from Page.swift populated inside SwipingController.</div><div>Copied attributed string from description property in same file, removing hard coded text and putting in property from Page.swift</div><div><br></div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": " var page: Page? {\n        didSet {\n            guard let unwrappedPage = page else {\n                return\n            }\n            bearImageView.image = UIImage(named: unwrappedPage.imageName)\n            \n            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 18)])\n            \n            attributedText.append(NSAttributedString(string: \"\\n\\n\\n\\(unwrappedPage.bodyText)\", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 13),NSAttributedStringKey.foregroundColor:UIColor.gray]))\n            \n            descriptionTextView.attributedText = attributedText\n            descriptionTextView.textAlignment = .center\n\n        }\n    }"
+    },
+    {
+      "type": "text",
+      "data": "Small change in Page.swift<div>Added another property called bodyText.</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "struct Page {\n    \n    let imageName: String\n    let headerText: String\n    let bodyText: String\n}\n"
+    },
+    {
+      "type": "text",
+      "data": "Changes to SwipingController.swift<div>Extra property from Page.swift added here:</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "let pages = [\n        Page(imageName: \"bear_first\", headerText: \"Join us today in our fun and games\",\n             bodyText:\"Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon\"),\n        Page(imageName: \"heart_second\", headerText: \"Subscribe and get coupons on our daily events\", bodyText: \"Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you have\"),\n        Page(imageName: \"leaf_third\", headerText: \"VIP members special services\",\n             bodyText: \"This is the last announcement\")\n    ]"
+    },
+    {
+      "type": "text",
+      "data": "Each cell is populated separately inside \"cellForItemAt\" for collection view.<div>Note old version commented out...</div>"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {\n        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: \"CellID\", for: indexPath) as! PageCell\n        \n        let page = pages[indexPath.item]\n        cell.page = page\n        \n//        let imageName = pages[indexPath.item].imageName\n//        cell.bearImageView.image = UIImage(named: imageName)\n        \n//        let descriptionText = pages[indexPath.item].headerText\n//        cell.descriptionTextView.text = descriptionText\n        \n        return cell\n    }"
+    }
+  ]
+}

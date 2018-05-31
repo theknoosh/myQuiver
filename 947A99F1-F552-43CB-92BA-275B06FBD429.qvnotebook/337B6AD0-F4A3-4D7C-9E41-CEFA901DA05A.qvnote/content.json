@@ -1,0 +1,9 @@
+{
+  "title": "Obstacle remove when offscreen and reappear when below the screen",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<b>Wednesday, July 5, 2017 5:45pm</b><div>After considerable troubleshooting, have finally gotten this part of the code to work.</div><div>Still have not implemented the code to do the same thing when object are above the screen.</div><div>this should not be too difficult as the same concept applies.</div><div><br></div><div>Have had to keep extending the dealine on this one. It was a fairly complex problem.</div>"
+    }
+  ]
+}

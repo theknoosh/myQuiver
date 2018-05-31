@@ -1,0 +1,23 @@
+{
+  "title": "Bug in instruction text",
+  "cells": [
+    {
+      "type": "text",
+      "data": "<div>Touch event will interrupt typewriter text effect if the effect is in progress at the time</div>"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "- (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {\n    \n    isBurning = FALSE;\n    CGPoint touchLocation = [touch locationInNode:self];\n    touch_X = touchLocation.x;\n    if (gameStarted) {\n        _pulseOn = YES;\n    }else {\n        gameStarted = YES;\n        self.arrow.visible = NO;\n        self.botText.visible = NO;\n        [self.waterBubble removeFromParent];\n        [self.burner removeFromParent];\n        _pulseOn = YES;\n    }\n"
+    },
+    {
+      "type": "text",
+      "data": "Instruction text code"
+    },
+    {
+      "type": "code",
+      "language": "objectivec",
+      "data": "#pragma mark typewriter text effect\n    \n    if (!gameStarted) {\n        \n        static float botTextDelay;\n        static int botTextIndex;\n        static int arrayIndex;\n        static float maxDelay = .05f;\n        botTextDelay += delta;\n        \n        if (arrayIndex < self.instructionText.count) {\n            \n            NSString *titleOne = [self.instructionText objectAtIndex:arrayIndex];\n            \n            NSUInteger stringLength = [titleOne length];\n            \n            if (botTextDelay > maxDelay) {\n                \n                if (botTextIndex <= stringLength) {\n                    NSString *subString = [titleOne substringToIndex:botTextIndex];\n                    [self.botText setString:subString];\n                    self.typeBeep = [self.audio playEffect:@\"Computer Beep.mp3\"];\n                    [self.typeBeep setVolume:0.5f];\n                    botTextDelay = 0;\n                    botTextIndex++;\n                    maxDelay = .05f;\n                }else {\n                    \n                    // Reset vars and start next line\n                    // Add graphic after certain lines\n                    switch (arrayIndex) {\n                        case WATER:\n                            [self addChild:_waterBubble];\n                            _waterBubble.position = ccp(290.0f, self.botText.position.y);\n                            _arrow.position = ccp(95.0f, 475.0f);\n                            _arrow.visible = YES;\n                            break;\n                        case STEAM:\n                            [self removeChild:_waterBubble];\n                            _waterBubble = nil;\n                            _arrow.rotation = 180.0f;\n                            _arrow.position = ccp(230.0f, _arrow.position.y);\n                            break;\n                        case STEAM + 1:\n                            _arrow.visible = NO;\n                            break;\n                        case TIME:\n                            _arrow.visible = YES;\n                            _arrow.rotation = 90.0f;\n                            _arrow.position = ccp(275.0f, 500.0f);\n                            break;\n                        case BURNER:\n                            // put burner at end of text\n                            _burner.scale = .75f;\n                            [self addChild:_burner];\n                            _burner.position = ccp(275.0f, self.botText.position.y + 20.0f);\n                            break;\n                        case BURNER + 1:\n                            [self removeChild:_burner];\n                            _burner = nil;\n                            break;\n                            \n                            \n                        default:\n                            break;\n                    }\n                    arrayIndex++; // next object in array\n                    botTextIndex = 0; // beginning of line\n                    botTextDelay = 0; // reset delay\n                    maxDelay = 2.0f;\n                }\n            }\n        }else {\n            if (botTextDelay > maxDelay) {\n                self.botText.visible = NO;\n                botTextIndex = 0;\n                self.arrow.visible = NO;\n                arrayIndex = 0;\n                gameStarted = YES;\n            }\n            \n        }\n    }\n"
+    }
+  ]
+}

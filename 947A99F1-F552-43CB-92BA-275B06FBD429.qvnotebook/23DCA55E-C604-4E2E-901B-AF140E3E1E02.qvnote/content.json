@@ -1,0 +1,18 @@
+{
+  "title": "eNums in Swift",
+  "cells": [
+    {
+      "type": "text",
+      "data": "Working on an unrelated project, I have discovered how to do specific eNums in swift. Example below;"
+    },
+    {
+      "type": "code",
+      "language": "swift",
+      "data": "enum modes {\n    case NOT_SET\n    case ADDITION\n    case SUBTRACTION\n}"
+    },
+    {
+      "type": "text",
+      "data": "Something to remember later on"
+    }
+  ]
+}

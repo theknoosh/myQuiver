@@ -1,0 +1,9 @@
+{
+  "title": "Keyboard shortcuts",
+  "cells": [
+    {
+      "type": "text",
+      "data": "F - zoom to selected object<div>W - select move tool</div><div>E - rotate tool - holding CMD will snap to object to specific degress</div><div>S - scale tool</div><div>V - Vertex snap - allows moving the snap point (only while button is down) &nbsp;</div><div>Ctrl D - duplicates selected object and puts it exactly where selected object was<br><div><br></div></div>"
+    }
+  ]
+}
